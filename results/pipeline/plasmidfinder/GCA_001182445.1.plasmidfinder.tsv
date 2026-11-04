@@ -1,0 +1,7 @@
+Database	Plasmid	Identity	Query / Template length	Contig	Position in contig	Note	Accession number
+enterobacteriales	Col(MG828)	95.51	178 / 262	CDFQ01000297.1 Klebsiella pneumoniae isolate KpVA-4 genome assembly, contig: KpVA-4_297	77..254		NC008486
+enterobacteriales	Col(MG828)	95.12	205 / 262	CDFQ01000298.1 Klebsiella pneumoniae isolate KpVA-4 genome assembly, contig: KpVA-4_298	52..256		NC008486
+enterobacteriales	ColRNAI	100.0	130 / 130	CDFQ01000164.1 Klebsiella pneumoniae isolate KpVA-4 genome assembly, contig: KpVA-4_164	6434..6563		DQ298019
+enterobacteriales	IncFIB(K)	100.0	549 / 560	CDFQ01000156.1 Klebsiella pneumoniae isolate KpVA-4 genome assembly, contig: KpVA-4_156	1..549		JN233704
+enterobacteriales	IncFII(K)	97.97	148 / 148	CDFQ01000078.1 Klebsiella pneumoniae isolate KpVA-4 genome assembly, contig: KpVA-4_78	1854..2001		CP000648
+enterobacteriales	IncX3	100.0	374 / 374	CDFQ01000065.1 Klebsiella pneumoniae isolate KpVA-4 genome assembly, contig: KpVA-4_65	1194..1567		JN247852

@@ -1,0 +1,7 @@
+Database	Plasmid	Identity	Query / Template length	Contig	Position in contig	Note	Accession number
+enterobacteriales	IncFIB(K)	100.0	560 / 560	CP008930.1 Klebsiella pneumoniae strain PMK1 plasmid pPMK1-A, complete sequence	135422..135981		JN233704
+enterobacteriales	IncFIB(pKPHS1)	99.82	560 / 560	CP008931.1 Klebsiella pneumoniae strain PMK1 plasmid pPMK1-B, complete sequence	81230..81789		CP003223
+enterobacteriales	IncFIB(pNDM-Mar)	100.0	439 / 439	CP008933.1 Klebsiella pneumoniae strain PMK1 plasmid pPMK1-NDM, complete sequence	84596..85034		JN420336
+enterobacteriales	IncFII(K)	100.0	148 / 148	CP008930.1 Klebsiella pneumoniae strain PMK1 plasmid pPMK1-A, complete sequence	17748..17895		CP000648
+enterobacteriales	IncHI1B(pNDM-MAR)	100.0	570 / 570	CP008933.1 Klebsiella pneumoniae strain PMK1 plasmid pPMK1-NDM, complete sequence	184417..184986		JN420336
+enterobacteriales	repB(R1701)	99.52	623 / 623	CP008932.1 Klebsiella pneumoniae strain PMK1 plasmid pPMK1-C, complete sequence	17949..18571		CP039970

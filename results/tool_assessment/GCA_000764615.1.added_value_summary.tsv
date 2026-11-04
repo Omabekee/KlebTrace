@@ -1,0 +1,5 @@
+assembly	source	features	same_name	other_name	no_ensembl_gene	not_a_gene
+GCA_000764615.1	AMRFinderPlus	69	21.0	44.0	0.0	4.0
+GCA_000764615.1	Bakta	5573	2384.0	3179.0	10.0	0.0
+GCA_000764615.1	PlasmidFinder	6	0.0	0.0	0.0	6.0
+GCA_000764615.1	Ensembl (Prokka via MGnify)	5733				

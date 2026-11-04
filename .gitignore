@@ -16,6 +16,7 @@ annotations/
 # Database files
 *.db
 *.sqlite
+!results/pipeline/database/klebtrace.sqlite
 *.duckdb
 
 # Nextflow
@@ -40,8 +41,10 @@ KlebTrace Phase 2 Galaxy annotation guide.docx
 KlebTrace Phase 2 questions and answers.docx
 
 # Pipeline outputs and large reference databases
-results/pipeline/
 results/pipeline_test/
 databases/
 results/phase2_galaxy/bakta_gff3/
 results/merged/
+
+# Ensembl annotation downloaded for the tool assessment (see docs/tool_assessment.md)
+data/ensembl/

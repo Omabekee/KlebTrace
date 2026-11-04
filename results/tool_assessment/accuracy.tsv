@@ -1,0 +1,25 @@
+assembly	phenotype	mic_mg_l	source	carbapenemases	porins_changed	explains_phenotype
+GCA_000764615.1	resistant		portal	blaNDM-1;blaNDM-1;blaNDM-1	none	yes
+GCA_000764615.1	resistant		amrfinderplus	blaNDM-1;blaNDM-1;blaNDM-1	none	yes
+GCA_000764615.1	resistant		kleborate	NDM-1;NDM-1;NDM-1	none	yes
+GCA_049383265.1	resistant	>128	portal	blaKPC-2	ompK36	yes
+GCA_049383265.1	resistant	>128	amrfinderplus	blaKPC-2	ompK35;ompK36	yes
+GCA_049383265.1	resistant	>128	kleborate	KPC-2	ompK35;ompK36	yes
+GCA_043905605.1	resistant	>32	portal	blaOXA-48;blaOXA-48	ompK36	yes
+GCA_043905605.1	resistant	>32	amrfinderplus	blaOXA-48;blaOXA-48	ompK36	yes
+GCA_043905605.1	resistant	>32	kleborate	OXA-48;OXA-48	ompK35;ompK36	yes
+GCA_019928365.1	resistant	>=16	portal	none	ompK36	no
+GCA_019928365.1	resistant	>=16	amrfinderplus	blaOXA	ompK35;ompK36	yes
+GCA_019928365.1	resistant	>=16	kleborate	OXA-232?	ompK35;ompK36	yes
+GCA_019928365.1	resistant	>=16	split_gene_screen	blaOXA-232	none	yes
+GCA_001182445.1	resistant	>32	portal	none	none	no
+GCA_001182445.1	resistant	>32	amrfinderplus	blaKPC	ompK35	yes
+GCA_001182445.1	resistant	>32	kleborate	none	ompK35	no
+GCA_001182445.1	resistant	>32	split_gene_screen	blaKPC-2	none	yes
+GCA_900774885.1	susceptible		portal	none	none	yes
+GCA_900774885.1	susceptible		amrfinderplus	none	none	yes
+GCA_900774885.1	susceptible		kleborate	none	none	yes
+GCA_000567225.2	resistant	>32	portal	none	none	no
+GCA_000567225.2	resistant	>32	amrfinderplus	none	ompK36	no
+GCA_000567225.2	resistant	>32	kleborate	none	ompK36	no
+GCA_000567225.2	resistant	>32	split_gene_screen	none	none	n/a (carbapenemases only)
