@@ -48,7 +48,7 @@ nextflow run nextflow/main.nf -profile test -stub-run
 nextflow run nextflow/main.nf -profile laptop
 ```
 
-Profiles: `laptop`, `singularity`, `docker`, `conda`, and `test` (two genomes: the complete NDM genome and the susceptible control). Docker is not connected to WSL on the development laptop, so Apptainer is used. Run time per step is written to `results/pipeline/pipeline_info/` (timeline, report and trace).
+Profiles: `laptop`, `singularity`, `docker`, `conda`, and `test` (two genomes: the complete NDM genome and the susceptible control). Run time per step is written to `results/pipeline/pipeline_info/` (timeline, report and trace).
 
 ## Reference databases
 
