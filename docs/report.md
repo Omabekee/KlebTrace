@@ -4,6 +4,8 @@
 
 #### GitHub Code: [KlebTrace](https://github.com/Omabekee/KlebTrace)
 
+This project was carried out as part of my EMBL-UNESCO fellowship at EMBL-EBI, where I work on the AMR Portal. It uses the portal's public data to test how well its resistance calls explain laboratory results, and what specialist annotation tools could add to Ensembl.
+
 ---
 
 ## Table of Contents
@@ -142,7 +144,7 @@ PlasmidFinder adds plasmid replicons, which Ensembl does not show at all. Klebor
   <figcaption>Figure 2: The KlebTrace track (brown) under Ensembl's genes (red) on pPMK1-NDM in the Ensembl Bacteria release 63 browser</figcaption>
 </figure>
 
-The track lines up with every Ensembl gene in the NDM region. In the scorecard, AMRFinderPlus scored 17 of 18 and Kleborate 10 of 18, while Bakta and PlasmidFinder scored 12 of 15 each, because the accuracy criterion does not apply to them. The full scorecard is in [`docs/tool_assessment.md`](tool_assessment.md).
+The track lines up with every Ensembl gene in the NDM region. In the scorecard, AMRFinderPlus scored 17 of 18 and Kleborate 10 of 18, while Bakta and PlasmidFinder scored 12 of 15 each, because the accuracy criterion does not apply to them. The full scorecard is in [`docs/tool_assessment.md`](tool_assessment.md). A short proposal for how these features could be shown in Ensembl is in [`docs/representation_note.md`](representation_note.md).
 
 ## 5. Conclusion and Future Directions
 
