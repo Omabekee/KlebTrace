@@ -4,10 +4,6 @@
 
 > **Status:** pilot complete on seven genomes (pipeline built to scale to the full EMBL-EBI AMR Portal release).
 
-## Report
-
-Learn more about the findings in the [full report](docs/report.md)
-
 ## Overview
 
 *Klebsiella pneumoniae* is a WHO critical-priority pathogen, and carbapenem resistance in this species leaves few treatment options. The [EMBL-EBI AMR Portal](https://www.ebi.ac.uk/amr) links laboratory antimicrobial susceptibility results to genome-based resistance calls for the same isolates.
