@@ -4,7 +4,8 @@
 
 > **Status:** pilot complete on seven genomes (pipeline built to scale to the full EMBL-EBI AMR Portal release).
 
-## Report: Learn more about the findings in the [full report](docs/report.md)
+## Report:
+Learn more about the findings in the [full report](docs/report.md)
 
 ## Overview
 
