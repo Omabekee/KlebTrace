@@ -4,7 +4,8 @@
 
 > **Status:** pilot complete on seven genomes (pipeline built to scale to the full EMBL-EBI AMR Portal release).
 
-## Report:
+## Report
+
 Learn more about the findings in the [full report](docs/report.md)
 
 ## Overview
@@ -13,23 +14,74 @@ Learn more about the findings in the [full report](docs/report.md)
 
 KlebTrace uses that resource to assess what specialist annotation tools could add to Ensembl's bacterial genomes, with five objectives:
 
-1. **Value for Ensembl.** What do specialist tools add to Ensembl's own genome annotation, and how could these features be shown in the Ensembl browser?
-2. **A reproducible pipeline.** Can the annotation be run as a pipeline that gives the same results every time, and loaded with the portal's calls and laboratory results into a database with automatic quality checks?
-3. **Annotation agreement.** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
-4. **Genotype and phenotype.** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
-5. **Genomic context.** Are carbapenemase genes located on plasmids or on the chromosome?
+1. **A reproducible pipeline -** Can the annotation be run as a pipeline, and loaded with the portal's calls and laboratory results into a database with automatic quality checks?
+2. **Annotation agreement -** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
+3. **Enriching Ensembl annotation -** What do specialist tools add to Ensembl's genome annotation, and how could these features be shown in the Ensembl browser?
+4. **Genotype and phenotype -** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
+5. **Genomic context -** Are carbapenemase genes located on plasmids or on the chromosome?
 
 ## Workflow
 
+```mermaid
+flowchart TD
+    portal[("AMR Portal<br/>Parquet release 2026-07")]
+    ena[("ENA assemblies<br/>FASTA")]
+    ensembl[("Ensembl Bacteria<br/>release 63 GFF3")]
+
+    subgraph select["Genome selection"]
+        query["query_portal.py<br/>DuckDB over HTTPS"]
+        screen["screen_carbapenemases.py<br/>split-gene re-screen"]
+        final["finalise_study_set.py<br/>seven study genomes"]
+    end
+
+    subgraph annotate["Annotation · Nextflow + Apptainer"]
+        bakta["Bakta<br/>reused from Galaxy"]
+        amr["AMRFinderPlus"]
+        kleb["Kleborate"]
+        pf["PlasmidFinder"]
+    end
+
+    subgraph integrate["Integration and quality control"]
+        merge["MERGE_ANNOTATIONS<br/>one GFF3 per genome"]
+        db["LOAD_DATABASE<br/>SQLite"]
+        qc["QC_CHECKS<br/>automated checks"]
+    end
+
+    subgraph assess["Tool assessment"]
+        acc["assess_accuracy.py<br/>genotype vs phenotype"]
+        added["assess_added_value.py<br/>vs Ensembl annotation"]
+    end
+
+    report(["Report, scorecard and<br/>Ensembl custom track"])
+
+    portal --> query --> screen --> final
+    ena --> screen
+    final --> bakta & amr & kleb & pf
+    bakta & amr & kleb & pf --> merge --> db --> qc
+    portal -. portal calls and lab results .-> db
+    db --> acc --> report
+    merge --> added
+    ensembl --> added --> report
+
+    classDef dataset fill:#E5E7EB,stroke:#333,color:#000;
+    classDef selectc fill:#BFD7ED,stroke:#333,color:#000;
+    classDef annot fill:#D9C8F0,stroke:#333,color:#000;
+    classDef integ fill:#A5DFCD,stroke:#333,color:#000;
+    classDef assessc fill:#F7B267,stroke:#333,color:#000;
+    classDef output fill:#EF767A,stroke:#333,color:#000,font-weight:bold;
+    class portal,ena,ensembl dataset;
+    class query,screen,final selectc;
+    class bakta,amr,kleb,pf annot;
+    class merge,db,qc integ;
+    class acc,added assessc;
+    class report output;
+    style select fill:#F8FAFC,stroke:#9CA3AF
+    style annotate fill:#F8FAFC,stroke:#9CA3AF
+    style integrate fill:#F8FAFC,stroke:#9CA3AF
+    style assess fill:#F8FAFC,stroke:#9CA3AF
 ```
-AMR Portal (Parquet)  -->  select isolates + extract portal calls   (scripts/query_portal.py)
-        |
-        v
-ENA assemblies (FASTA) -->  annotate: Bakta, AMRFinderPlus, Kleborate, PlasmidFinder
-        |                        (prototyped in galaxy/, implemented in nextflow/)
-        v
-compare calls + phenotypes -->  relational database -->  results/ and docs/
-```
+
+The annotation was prototyped as a Galaxy workflow (`galaxy/`) and built in Nextflow (`nextflow/`) with the same tool versions, reproducing the Galaxy outputs.
 
 ## Repository structure
 
@@ -74,6 +126,16 @@ python scripts/summarise_galaxy_outputs.py
 pytest tests/
 ```
 
+## Future directions
+
+- **One feature per gene for Ensembl:** merge the Bakta and AMRFinderPlus features so that each resistance gene appears once, with its resistance details attached.
+- **Beyond resistance:** find biosynthetic gene clusters with antiSMASH and compare them with Kleborate's virulence loci, such as yersiniabactin and aerobactin.
+- **Gene function:** summarise gene functions into pathways with eggNOG-mapper, which uses the EggNOG database Ensembl already applies.
+- **Confirm split genes:** check split carbapenemase genes with sequencing reads or long-read assemblies.
+- **Unresolved resistance:** look for other causes of resistance in GCA_000567225.2, such as efflux pumps or AmpC enzymes.
+
+See the [report](docs/report.md) for the full discussion.
+
 ## Data sources
 
 - EMBL-EBI AMR Portal release files: https://ftp.ebi.ac.uk/pub/databases/amr_portal/releases/
@@ -81,7 +143,10 @@ pytest tests/
 
 ## Author
 
-Chioma B Oselu
+**Chioma B Oselu**<br>
+PhD Researcher, Bioinformatics | Microbial Genomics | Reproducible Pipelines<br>
+2025 L'Oréal-UNESCO For Women in Science Laureate (Sub-Saharan Africa)<br>
+[LinkedIn](https://www.linkedin.com/in/chioma-onyido/) · [GitHub](https://github.com/Omabekee) · [Google Scholar](https://scholar.google.com/citations?user=OTw33EIAAAAJ)
 
 ## Licence
 
