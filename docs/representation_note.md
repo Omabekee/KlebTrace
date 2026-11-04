@@ -8,7 +8,7 @@ Ensembl's bacterial genes come from Prokka. For resistance genes this gives a ge
 
 ## Proposal
 
-1. **Add resistance information to the existing gene, not a second gene.** AMRFinderPlus found no genes that Ensembl lacks: every resistance gene sat on an Ensembl gene. So the resistance call should be attached to that gene as extra attributes, rather than drawn as a separate feature. In the KlebTrace track, each resistance gene appears twice (once from Bakta, once from AMRFinderPlus), which is harder to read.
+1. **Add resistance information to the existing gene, not a second gene.** AMRFinderPlus found no genes that Ensembl lacks: every resistance gene sat on an Ensembl gene. So the resistance call should be attached to that gene as extra attributes, not drawn as a separate feature. In the KlebTrace track, each resistance gene appears twice (once from Bakta, once from AMRFinderPlus), which is harder to read.
 
 2. **Carry these attributes for each resistance gene:**
 

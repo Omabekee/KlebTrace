@@ -10,11 +10,12 @@
 
 *Klebsiella pneumoniae* is a WHO critical-priority pathogen, and carbapenem resistance in this species leaves few treatment options. The [EMBL-EBI AMR Portal](https://www.ebi.ac.uk/amr) links laboratory antimicrobial susceptibility results to genome-based resistance calls for the same isolates.
 
-KlebTrace uses that resource to ask three questions:
+KlebTrace uses that resource to ask four questions:
 
-1. **Annotation agreement.** When the same genomes are re-annotated independently (Bakta, AMRFinderPlus, Kleborate), are the resistance genes reported by the AMR Portal recovered?
+1. **Annotation agreement.** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
 2. **Genotype-phenotype concordance.** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
 3. **Genomic context.** Are carbapenemase genes located on plasmids or on the chromosome?
+4. **Value for Ensembl.** What do specialist tools add to Ensembl's own genome annotation, and how could these features be shown in the Ensembl browser?
 
 ## Workflow
 
@@ -34,7 +35,7 @@ compare calls + phenotypes -->  relational database -->  results/ and docs/
 |---|---|
 | `data/` | Selected isolates (`samples.tsv`) and the portal's resistance calls (`portal_calls.tsv`) |
 | `galaxy/` | Galaxy workflow prototype, tool versions and screenshots |
-| `nextflow/` | Reproducible pipeline (in development) |
+| `nextflow/` | Reproducible Nextflow pipeline |
 | `scripts/` | Python scripts for querying, downloading, parsing, comparing and loading |
 | `database/` | Database schema and example queries |
 | `tests/` | Unit tests and small test inputs |

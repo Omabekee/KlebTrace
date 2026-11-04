@@ -97,10 +97,10 @@ Each criterion scored 1 (weak) to 3 (strong) for use in Ensembl Bacteria.
 
 ## Recommendation
 
-1. **AMRFinderPlus, run on the nucleotide sequence, is the strongest candidate** for adding resistance annotation to Ensembl Bacteria. It is already the tool behind the AMR Portal, it covers all bacteria, its database is small, and its calls explain the most laboratory results here. Running it on DNA rather than on predicted proteins recovers genes split at contig ends, which the portal's protein-based calls miss (2 of 7 genomes here, and 5 of 37 strictly resistant portal-negative isolates in the wider screen). Its output needs a GFF3 conversion, which `merge_annotations.py` already does.
+1. **AMRFinderPlus, run on the nucleotide sequence, is the strongest candidate** for adding resistance annotation to Ensembl Bacteria. It is already the tool behind the AMR Portal, it covers all bacteria, its database is small, and its calls explain the most laboratory results here. Running it on the DNA, not on predicted proteins, recovers genes split at contig ends, which the portal's protein-based calls miss (2 of 7 genomes here, and 5 of 37 strictly resistant portal-negative isolates in the wider screen). Its output needs a GFF3 conversion, which `merge_annotations.py` already does.
 2. **PlasmidFinder** adds a feature type Ensembl does not have, at almost no cost. It is a natural companion to AMRFinderPlus, because it shows which plasmid family carries each resistance gene.
-3. **Kleborate** is valuable for *K. pneumoniae* but suits genome metadata (species, sequence type, virulence score) rather than gene tracks, and it is species-specific.
-4. **Bakta** gives much the same genes as Ensembl's Prokka-based build, with richer feature types and cross-references, but its 39.4 GB database makes it the most expensive tool. It would be worth considering if Ensembl rebuilds its bacterial gene sets, rather than as an add-on.
+3. **Kleborate** is valuable for *K. pneumoniae* but its results (species, sequence type, virulence score) suit the genome summary page, not a gene track, and it is species-specific.
+4. **Bakta** gives much the same genes as Ensembl's Prokka-based build, with richer feature types and cross-references, but its 39.4 GB database makes it the most expensive tool. It would be worth considering if Ensembl rebuilds its bacterial gene sets, not as an add-on.
 
 ## Prototype display
 
