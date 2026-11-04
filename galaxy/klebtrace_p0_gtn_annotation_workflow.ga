@@ -3,7 +3,7 @@
     "annotation": "",
     "comments": [],
     "format-version": "0.1",
-    "name": "KlebTrace P0 \u2013 GTN bacterial annotation workflow (MRSA KUN1163)",
+    "name": "KlebTrace P0 - GTN bacterial annotation workflow (MRSA KUN1163)",
     "steps": {
         "0": {
             "annotation": "",

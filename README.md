@@ -11,19 +11,19 @@
 KlebTrace uses that resource to ask three questions:
 
 1. **Annotation agreement.** When the same genomes are re-annotated independently (Bakta, AMRFinderPlus, Kleborate), are the resistance genes reported by the AMR Portal recovered?
-2. **Genotype–phenotype concordance.** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
+2. **Genotype-phenotype concordance.** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
 3. **Genomic context.** Are carbapenemase genes located on plasmids or on the chromosome?
 
 ## Workflow
 
 ```
-AMR Portal (Parquet)  ──►  select isolates + extract portal calls   (scripts/query_portal.py)
-        │
-        ▼
-ENA assemblies (FASTA) ──►  annotate: Bakta · AMRFinderPlus · Kleborate · PlasmidFinder
-        │                        (prototyped in galaxy/, implemented in nextflow/)
-        ▼
-compare calls + phenotypes ──►  relational database ──►  results/ and docs/
+AMR Portal (Parquet)  -->  select isolates + extract portal calls   (scripts/query_portal.py)
+        |
+        v
+ENA assemblies (FASTA) -->  annotate: Bakta, AMRFinderPlus, Kleborate, PlasmidFinder
+        |                        (prototyped in galaxy/, implemented in nextflow/)
+        v
+compare calls + phenotypes -->  relational database -->  results/ and docs/
 ```
 
 ## Repository structure

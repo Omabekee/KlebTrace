@@ -3,10 +3,10 @@
 Rebuilds the Phase 2 Galaxy workflow (v0.2) as a reproducible pipeline, using the same tool versions, then merges, loads and checks the results.
 
 ```
-samples.tsv + FASTA ─┬─► BAKTA ──────────┐
-                     ├─► AMRFINDERPLUS ──┤
-                     ├─► KLEBORATE ──────┼─► MERGE_ANNOTATIONS ─► LOAD_DATABASE ─► QC_CHECKS
-                     └─► PLASMIDFINDER ──┘    (one GFF3/genome)    (SQLite)         (qc_report.tsv)
+samples.tsv + FASTA --+--> BAKTA -----------+
+                      +--> AMRFINDERPLUS ---+
+                      +--> KLEBORATE -------+--> MERGE_ANNOTATIONS --> LOAD_DATABASE --> QC_CHECKS
+                      +--> PLASMIDFINDER ---+    (one GFF3/genome)     (SQLite)          (qc_report.tsv)
 ```
 
 ## Status (Phase 3 skeleton)
