@@ -104,4 +104,27 @@ Each criterion scored 1 (weak) to 3 (strong) for use in Ensembl Bacteria.
 
 ## Prototype display
 
-`results/ensembl_tracks/GCA_000764615.1.ensembl_names.gff3` is the merged KlebTrace annotation for PMK1 with Ensembl's sequence names, ready to upload as a custom track in the Ensembl Bacteria browser and view at pPMK1-NDM:45,000-68,000. Screenshot: to add.
+The merged KlebTrace annotation for PMK1, renamed to Ensembl's sequence names (`results/ensembl_tracks/GCA_000764615.1.ensembl_names.gff3`), was uploaded as a custom track in the Ensembl Bacteria release 63 browser and viewed at pPMK1-NDM:45,000-68,000.
+
+<figure>
+  <img src="../results/tool_assessment/figures/p4_ensembl_PMK1_NDM_klebtrace_track.png" alt="KlebTrace custom track under Ensembl's genes on pPMK1-NDM" width="800">
+  <figcaption>Figure 1: The KlebTrace track (brown) under Ensembl's genes (red) on plasmid pPMK1-NDM, 45,000 to 68,000. Forward-strand genes are above the blue plasmid bar and reverse-strand genes below it.</figcaption>
+</figure>
+
+- **The track lines up with Ensembl's genes.** Every KlebTrace feature sits directly over an Ensembl gene, on the same strand, across the three repeated blocks. The renaming of the sequences worked, and the coordinates agree.
+- **KlebTrace adds names and meaning.** Ensembl's genes here are labelled only by their Ensembl IDs (ENSB:...) unless you click them. The KlebTrace track labels each one: blaNDM-1 (from AMRFinderPlus) above "subclass B1 metallo-beta-lactamase NDM-1" (from Bakta), ble, the GroES and GroEL chaperones, and the Tn3-family IS3000 transposase at the end of each block.
+- **Each resistance gene shows twice in the track,** once from Bakta and once from AMRFinderPlus. For a display in Ensembl, one merged feature per gene would be clearer.
+
+<figure>
+  <img src="../results/tool_assessment/figures/p4_ensembl_PMK1_NDM_ensembl_genes.png" alt="Ensembl's own gene names on pPMK1-NDM, 31,500 to 81,500" width="800">
+  <figcaption>Figure 2: Ensembl's own genes and gene names on pPMK1-NDM, 31,500 to 81,500, without the KlebTrace track.</figcaption>
+</figure>
+
+Figure 2 shows the naming problem described under Added value. Ensembl names the three NDM copies correctly (blaNDM-1_1, _2 and _3), but the genes just before them are bla_3 (described as "Beta-lactamase CTX-M-1"; AMRFinderPlus: blaCTX-M-15), bla_4 ("Beta-lactamase OXA-1"; AMRFinderPlus: blaOXA-1), cat_1 (catB3) and aacA4 (aac(6')-Ib-cr5). A reader of Ensembl alone would not know that this plasmid also carries an extended-spectrum beta-lactamase.
+
+**How to open this view.** In November 2026, bacteria.ensembl.org redirects to the new Ensembl site, and the new site does not hold PMK1: its FTP area (https://ftp.ebi.ac.uk/pub/ensemblorganisms/) has GCA_900774885.1 (the susceptible control, annotated with Prokka) but neither GCA_000764615.1 nor its RefSeq copy GCF_000764615.1. The assembly is still current at ENA and NCBI, so the reason is not a withdrawn or replaced assembly; it is not stated in the files checked. The release 63 archive of Ensembl Bacteria still has PMK1:
+
+1. Open the species page, https://jun2026-bacteria.ensembl.org/Klebsiella_pneumoniae_gca_000764615 (the species name is the second column of `species_EnsemblBacteria.txt`, with a capital K). The old address, https://bacteria.ensembl.org/Klebsiella_pneumoniae_gca_000764615, also redirects there.
+2. Click **Example region** to open the region view.
+3. In the location box at the top of the region view, type `pPMK1-NDM:45000-68000` and press **Go**.
+4. In the left-hand menu, click **Custom tracks**, choose the GFF3 file and the GFF3 format, and click **Add data**.
