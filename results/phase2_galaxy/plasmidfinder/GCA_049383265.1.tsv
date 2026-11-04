@@ -1,0 +1,4 @@
+Database	Plasmid	Identity	Query / Template length	Contig	Position in contig	Note	Accession number
+enterobacteriales	IncFIB(K)	98.93	560 / 560	JBMRHU010000043.1 Klebsiella pneumoniae strain 10v summer NODE_43_length_25614_cov_50.291914, whole genome shotgun sequence	4154..4713		JN233704
+enterobacteriales	IncFII(K)	95.95	148 / 148	JBMRHU010000034.1 Klebsiella pneumoniae strain 10v summer NODE_34_length_43898_cov_51.105709, whole genome shotgun sequence	1781..1928		CP000648
+enterobacteriales	IncN	99.42	514 / 514	JBMRHU010000035.1 Klebsiella pneumoniae strain 10v summer NODE_35_length_43160_cov_47.548718, whole genome shotgun sequence	5307..5820		AY046276

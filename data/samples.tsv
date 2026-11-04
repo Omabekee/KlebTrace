@@ -1,0 +1,8 @@
+biosample	assembly	country	collection_year	region	phenotype	mic_mg_l	strict_resistant	carbapenemase_genes	n_carbapenemase_genes	carbapenem_point_mutations	in_ensembl	selection_group	carbapenemase_family	reannotated_carbapenemase	kleborate_porin
+SAMN02885365	GCA_000764615.1	Nepal	2011	Asia	resistant		False	blaNDM-1	1		True	resistant_with_carbapenemase	NDM		
+SAMN41136751	GCA_049383265.1	Brazil	2023	Americas	resistant	>128	True	blaKPC-2	1	ompK36_D135DGD	False	resistant_with_carbapenemase	KPC		
+SAMN43765587	GCA_043905605.1	Tunisia	2022	Africa	resistant	>32	True	blaOXA-48	1	ompK36_D135DD	False	resistant_with_carbapenemase	OXA-48-like		
+SAMN18874725	GCA_019928365.1	Kenya	2015	Africa	resistant	>=16	True		0	ompK36_D135DGD	False	portal_negative_carbapenemase_on_reannotation	OXA-48-like	blaOXA-232 (split)	
+SAMEA3108420	GCA_001182445.1	Italy	2011	Europe	resistant	>32	True		0		False	portal_negative_carbapenemase_on_reannotation	KPC	blaKPC-2 (split)	
+SAMEA104567806	GCA_900774885.1	Saint Lucia	2018	Americas	susceptible		False		0		True	susceptible			
+SAMN02138666	GCA_000567225.2	United States of America	2012	Americas	resistant	>32	True		0		False	resistant_no_carbapenemase_confirmed		none (screen and Kleborate)	ompK36:c.T108del

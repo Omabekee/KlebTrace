@@ -1,0 +1,7 @@
+##gff-version 3
+CP008930.1	PlasmidFinder	origin_of_replication	17748	17895	.	.	.	ID=plasmidfinder_4;Name=IncFII(K);identity=100.0;length_query_template=148 / 148;reference=CP000648
+CP008930.1	PlasmidFinder	origin_of_replication	135422	135981	.	.	.	ID=plasmidfinder_1;Name=IncFIB(K);identity=100.0;length_query_template=560 / 560;reference=JN233704
+CP008931.1	PlasmidFinder	origin_of_replication	81230	81789	.	.	.	ID=plasmidfinder_2;Name=IncFIB(pKPHS1);identity=99.82;length_query_template=560 / 560;reference=CP003223
+CP008932.1	PlasmidFinder	origin_of_replication	17949	18571	.	.	.	ID=plasmidfinder_6;Name=repB(R1701);identity=99.52;length_query_template=623 / 623;reference=CP039970
+CP008933.1	PlasmidFinder	origin_of_replication	84596	85034	.	.	.	ID=plasmidfinder_3;Name=IncFIB(pNDM-Mar);identity=100.0;length_query_template=439 / 439;reference=JN420336
+CP008933.1	PlasmidFinder	origin_of_replication	184417	184986	.	.	.	ID=plasmidfinder_5;Name=IncHI1B(pNDM-MAR);identity=100.0;length_query_template=570 / 570;reference=JN420336

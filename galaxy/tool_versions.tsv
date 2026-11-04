@@ -1,0 +1,17 @@
+phase	date	galaxy_server	tool	tool_version	database	database_version	notes
+0_tutorial	2026-11-02	usegalaxy.org	Bakta	1.9.4+galaxy3 (Bakta software v1.9.4)	Bakta DB	V5.1_2024-01-19 (full)	GTN Bacterial Genome Annotation tutorial; MRSA KUN1163 contigs (DRR187559); translation table 11; "Keep original contig header" = Yes
+0_tutorial	2026-11-02	usegalaxy.org	AMRFinderPlus (run within Bakta)	bundled with Bakta 1.9.4	AMRFinderPlus DB	amrfinderplus_V3.12_2024-05-02.2	Newest AMRFinderPlus database offered on usegalaxy.org at time of run
+0_tutorial	2026-11-02	usegalaxy.org	PlasmidFinder	2.1.6+galaxy1	PlasmidFinder DB	plasmidfinder_81c11f4_2023_12_04	Minimum coverage 0.6, minimum identity 0.95. Version 3.0.3+galaxy0 fails on usegalaxy.org (Git "dubious ownership" error reading the shared database); do not use 3.0.3
+0_tutorial	2026-11-02	usegalaxy.org	IntegronFinder	2.0.5+galaxy0	built-in models	n/a	Local max on, promoter and attI search on; distance threshold 4,000; CALIN threshold 2; attC size 40–200
+0_tutorial	2026-11-02	usegalaxy.org	ISEScan	1.7.2.3+galaxy1	built-in models	n/a	Short IS elements kept
+0_tutorial	2026-11-02	usegalaxy.org	Replace Text (text_processing)	9.3+galaxy1	n/a	n/a	Splits PlasmidFinder positions "start..end" into two columns; trims contig name at " len"
+0_tutorial	2026-11-02	usegalaxy.org	Select last lines (text_processing)	9.11+galaxy0	n/a	n/a	Mode "+2": output from line 2 onwards, removing the header row
+0_tutorial	2026-11-02	usegalaxy.org	Table to GFF3	1.2	n/a	n/a	Produces non-standard columns and shifts start positions by +1; see learning log
+0_tutorial	2026-11-02	usegalaxy.org	JBrowse	1.16.11+galaxy1	n/a	n/a	Genetic code 11; track groups Bakta, Plasmid sequences, IS elements
+2_prototype	2026-11-03	local (WSL, not Galaxy)	Kleborate	3.3.0b1 (Bioconda; beta release)	Kaptive K and O	K 3.3.0, O 3.3.2 (Kaptive 3.3.2)	Not available on usegalaxy.org (Nov 2026); run locally via Bioconda. kpsc preset modules except kpsc__cgmlst, whose database is a separate download; see results/kleborate/run.log
+2_galaxy	2026-11-03	usegalaxy.org	Bakta	1.9.4+galaxy3 (Bakta software v1.9.4)	Bakta DB	V5.1_2024-01-19 (full)	Workflow v0.2 on collection kpneumo_genomes (6 genomes); "Keep original contig headers" = Yes; genus and species left empty
+2_galaxy	2026-11-03	usegalaxy.org	AMRFinderPlus (run within Bakta)	bundled with Bakta 1.9.4	AMRFinderPlus DB	amrfinderplus_V3.12_2024-05-02.2	Older database than the standalone AMRFinderPlus run below; Bakta's AMR labels may therefore differ from the standalone calls
+2_galaxy	2026-11-03	usegalaxy.org	AMRFinderPlus	4.2.7+galaxy0	AMRFinderPlus DB	amrfinderplus_V4.2_2026-05-15.1	Organism Klebsiella_pneumoniae; --plus on; --mutation_all on; --report_common on; minimum coverage 0.5; identity threshold curated (-1); translation table 11
+2_galaxy	2026-11-03	usegalaxy.org	PlasmidFinder	2.1.6+galaxy1	PlasmidFinder DB	plasmidfinder_81c11f4_2023_12_04	Container plasmidfinder:2.1.6--py314hdfd78af_2; minimum coverage 0.6, minimum identity 0.95
+2_galaxy	2026-11-03	usegalaxy.org	IntegronFinder	2.0.5+galaxy0	built-in models	n/a	Same settings as Phase 0; replicon topology linear
+2_galaxy	2026-11-03	usegalaxy.org	ISEScan	1.7.2.3+galaxy1	built-in models	n/a	Gene prediction by FragGeneScan (-t illumina_5); short IS elements kept

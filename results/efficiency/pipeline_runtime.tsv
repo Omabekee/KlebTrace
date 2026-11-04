@@ -1,0 +1,9 @@
+step	genomes	median_per_genome_s	slowest_s	total_task_time_s	notes
+AMRFinderPlus 4.2.7	7	65	480	1128	slowest was GCA_000764615.1 (complete 6 Mb genome); others 55-67 s
+Kleborate 3.3.0b1	7	42	65	312	local conda environment
+PlasmidFinder 2.1.6	7	21	24	150
+merge_annotations.py	7	1	2	9
+load_database.py	1	2	2	2	all seven genomes
+qc_checks.py	1	3	3	3	all seven genomes
+Bakta 1.9.4	7	-	-	-	not run: Galaxy GFF3 reused (full database is 39.4 GB)
+whole pipeline (wall clock)	7	-	-	834	13 min 54 s on 4 CPUs (2 per task), 0.5 GB peak memory; database step rerun with -resume after a fix

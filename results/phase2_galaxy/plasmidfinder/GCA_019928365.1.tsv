@@ -1,0 +1,7 @@
+Database	Plasmid	Identity	Query / Template length	Contig	Position in contig	Note	Accession number
+enterobacteriales	Col440I	95.61	114 / 114	JAGYDM010000058.1 Klebsiella pneumoniae strain MRSN368320 MRSN368320_contig00058, whole genome shotgun sequence	517..630		CP023920
+enterobacteriales	Col440II	96.81	282 / 282	JAGYDM010000050.1 Klebsiella pneumoniae strain MRSN368320 MRSN368320_contig00050, whole genome shotgun sequence	1878..2159		CP023921
+enterobacteriales	Col440II	97.52	282 / 282	JAGYDM010000051.1 Klebsiella pneumoniae strain MRSN368320 MRSN368320_contig00051, whole genome shotgun sequence	2333..2614		CP023921
+enterobacteriales	ColKP3	100.0	280 / 280	JAGYDM010000061.1 Klebsiella pneumoniae strain MRSN368320 MRSN368320_contig00061, whole genome shotgun sequence	4199..4478		JN205800
+enterobacteriales	IncFIB(K)	98.93	560 / 560	JAGYDM010000028.1 Klebsiella pneumoniae strain MRSN368320 MRSN368320_contig00028, whole genome shotgun sequence	12470..13029		JN233704
+enterobacteriales	IncFII(K)	95.95	148 / 148	JAGYDM010000029.1 Klebsiella pneumoniae strain MRSN368320 MRSN368320_contig00029, whole genome shotgun sequence	59667..59814		CP000648

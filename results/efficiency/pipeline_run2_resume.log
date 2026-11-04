@@ -1,0 +1,7 @@
+[33mNextflow 26.10.5 is available - Please consider updating your version to it(B[m
+[PIPELINE] main.nf | profile=laptop
+[WORKDIR] /home/bonyido/klebtrace_project/klebtrace/work
+[PROCESS d1/802464] LOAD_DATABASE
+[PROCESS 06/9f49bf] QC_CHECKS
+
+[SUCCESS] completed=2 failed=0 cached=28

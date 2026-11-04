@@ -1,0 +1,14 @@
+# Environment for the Python scripts, tests and Nextflow.
+# Annotation tools (Bakta, AMRFinderPlus, Kleborate, PlasmidFinder) run in
+# per-tool containers through Nextflow, so they are not installed here.
+name: klebtrace
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - python-duckdb
+  - pandas
+  - pyarrow
+  - pytest
+  - nextflow

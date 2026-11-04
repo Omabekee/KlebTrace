@@ -1,0 +1,72 @@
+[PIPELINE] main.nf | profile=laptop
+[WORKDIR] /home/bonyido/klebtrace_project/klebtrace/work
+[PROCESS 34/6a2e2a] AMRFINDERPLUS (GCA_049383265.1)
+[PROCESS 3d/030efa] AMRFINDERPLUS (GCA_019928365.1)
+[PROCESS 74/3ae5b0] PLASMIDFINDER (GCA_049383265.1)
+[PROCESS ed/4c186c] AMRFINDERPLUS (GCA_001182445.1)
+[PROCESS 6e/a9c292] PLASMIDFINDER (GCA_019928365.1)
+[PROCESS c2/fd5342] AMRFINDERPLUS (GCA_000764615.1)
+[PROCESS 91/3c4e2e] PLASMIDFINDER (GCA_043905605.1)
+[PROCESS 35/b9d9e6] AMRFINDERPLUS (GCA_043905605.1)
+[PROCESS 9d/038e04] AMRFINDERPLUS (GCA_900774885.1)
+[PROCESS 80/cde3f2] PLASMIDFINDER (GCA_000764615.1)
+[PROCESS a6/1ba12e] PLASMIDFINDER (GCA_001182445.1)
+[PROCESS dc/f48c99] AMRFINDERPLUS (GCA_000567225.2)
+[PROCESS 0c/73d4d4] PLASMIDFINDER (GCA_000567225.2)
+[PROCESS a7/cb98d4] PLASMIDFINDER (GCA_900774885.1)
+[PROCESS 5e/022529] KLEBORATE (GCA_043905605.1)
+[PROCESS 8b/c129ed] KLEBORATE (GCA_049383265.1)
+[PROCESS 5e/ccc486] KLEBORATE (GCA_000764615.1)
+[PROCESS 9a/38d224] KLEBORATE (GCA_019928365.1)
+[PROCESS 80/87f98d] KLEBORATE (GCA_001182445.1)
+[PROCESS 0e/6b684f] KLEBORATE (GCA_000567225.2)
+[PROCESS f0/320dd1] KLEBORATE (GCA_900774885.1)
+[PROCESS cc/ce1df2] MERGE_ANNOTATIONS (GCA_043905605.1)
+[PROCESS 39/b208c7] MERGE_ANNOTATIONS (GCA_049383265.1)
+[PROCESS ec/e599ea] MERGE_ANNOTATIONS (GCA_019928365.1)
+[PROCESS 28/ff4643] MERGE_ANNOTATIONS (GCA_000764615.1)
+[PROCESS 03/b1f8b0] MERGE_ANNOTATIONS (GCA_000567225.2)
+[PROCESS 4e/b8b5b6] MERGE_ANNOTATIONS (GCA_001182445.1)
+[PROCESS 57/5dfd57] MERGE_ANNOTATIONS (GCA_900774885.1)
+[PROCESS 3f/ddd230] LOAD_DATABASE
+[ERROR] ERROR ~ Error executing process > 'LOAD_DATABASE'
+
+Caused by:
+  Process `LOAD_DATABASE` terminated with an error exit status (2)
+
+
+Command executed:
+
+  load_database.py --schema schema.sql --samples samples.tsv --portal-calls portal_calls.tsv \
+      --gff3 GCA_043905605.1.klebtrace.gff3 GCA_049383265.1.klebtrace.gff3 GCA_019928365.1.klebtrace.gff3 GCA_000764615.1.klebtrace.gff3 GCA_000567225.2.klebtrace.gff3 GCA_001182445.1.klebtrace.gff3 GCA_900774885.1.klebtrace.gff3 --amrfinderplus GCA_019928365.1.amrfinderplus.tsv GCA_049383265.1.amrfinderplus.tsv GCA_001182445.1.amrfinderplus.tsv GCA_043905605.1.amrfinderplus.tsv GCA_900774885.1.amrfinderplus.tsv GCA_000764615.1.amrfinderplus.tsv GCA_000567225.2.amrfinderplus.tsv --kleborate GCA_043905605.1.kleborate.tsv GCA_049383265.1.kleborate.tsv GCA_019928365.1.kleborate.tsv GCA_000764615.1.kleborate.tsv GCA_000567225.2.kleborate.tsv GCA_001182445.1.kleborate.tsv GCA_900774885.1.kleborate.tsv \
+      --out klebtrace.sqlite
+
+Command exit status:
+  2
+
+Command output:
+  (empty)
+
+Command error:
+  usage: load_database.py [-h] [--schema SCHEMA] [--samples SAMPLES]
+                          [--manifest MANIFEST] [--portal-calls PORTAL_CALLS]
+                          [--screen SCREEN] --fasta FASTA [FASTA ...] --gff3
+                          GFF3 [GFF3 ...] --amrfinderplus AMRFINDERPLUS
+                          [AMRFINDERPLUS ...] --kleborate KLEBORATE
+                          [KLEBORATE ...] [--out OUT]
+  load_database.py: error: the following arguments are required: --fasta
+
+Work dir:
+  /home/bonyido/klebtrace_project/klebtrace/work/3f/ddd23011f5d000b95111a58be43519
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+
+ -- Check '.nextflow.log' file for details
+[ERROR] LOAD_DATABASE
+exit: 2
+cmd: load_database.py --schema schema.sql --samples samples.tsv --portal-calls portal_calls.tsv \ --gff3 GCA_043905605.1.klebtrace.gff3 GCA_049383265.1.klebtrace.gff3 GCA_019928365.1.klebtrace.gff3...
+stderr: usage: load_database.py [-h] [--schema SCHEMA] [--samples SAMPLES] |                         [--manifest MANIFEST] [--portal-calls PORTAL_CALLS] |                         [--screen SCREEN] --fasta FASTA [FASTA ...] --gff3 |                         GFF3 [GFF3 ...] --amrfinderplus AMRFINDERPLUS |                         [AMRFINDERPLUS ...] --kleborate KLEBORATE |                         [KLEBORATE ...] [--out OUT] | load_database.py: error: the following arguments are required: --fasta
+workdir: /home/bonyido/klebtrace_project/klebtrace/work/3f/ddd23011f5d000b95111a58be43519
+
+[FAILED] completed=29 failed=1 cached=0
+exit=1

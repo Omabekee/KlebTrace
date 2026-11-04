@@ -1,0 +1,5 @@
+Database	Plasmid	Identity	Query / Template length	Contig	Position in contig	Note	Accession number
+enterobacteriales	IncC	100.0	417 / 417	DAZTLE010000037.1 TPA_asm: Klebsiella pneumoniae isolate HBH_1879_22 SAMN43765587-rid23444503.denovo.039, whole genome shotgun sequence	17491..17907		JN157804
+enterobacteriales	IncFIB(pNDM-Mar)	99.54	439 / 439	DAZTLE010000073.1 TPA_asm: Klebsiella pneumoniae isolate HBH_1879_22 SAMN43765587-rid23444503.denovo.080, whole genome shotgun sequence	181..619		JN420336
+enterobacteriales	IncHI1B(pNDM-MAR)	99.47	570 / 570	DAZTLE010000046.1 TPA_asm: Klebsiella pneumoniae isolate HBH_1879_22 SAMN43765587-rid23444503.denovo.049, whole genome shotgun sequence	7492..8061		JN420336
+enterobacteriales	IncL	100.0	661 / 661	DAZTLE010000062.1 TPA_asm: Klebsiella pneumoniae isolate HBH_1879_22 SAMN43765587-rid23444503.denovo.067, whole genome shotgun sequence	1762..2422		JN626286

@@ -1,0 +1,138 @@
+assembly	gene	klebtrace_rows	portal_rows	found_by
+GCA_000567225	aac(6')-Ib3	1	0	KlebTrace only
+GCA_000567225	aadA1	1	1	both
+GCA_000567225	blaOXA-663	1	1	both
+GCA_000567225	blaSHV-11	1	1	both
+GCA_000567225	emrD	1	1	both
+GCA_000567225	floR	1	1	both
+GCA_000567225	fosA	1	1	both
+GCA_000567225	kdeA	1	0	KlebTrace only
+GCA_000567225	mgrB_Q30Ter	1	0	KlebTrace only
+GCA_000567225	ompK36_G36GALLNKTer	1	0	KlebTrace only
+GCA_000567225	oqxA	1	1	both
+GCA_000567225	oqxB	1	1	both
+GCA_000567225	qnrB4	1	0	KlebTrace only
+GCA_000567225	sul2	1	1	both
+GCA_000567225	tet(D)	1	1	both
+GCA_000764615	aac(6')-Ib-cr5	1	0	KlebTrace only
+GCA_000764615	aadA2	1	0	KlebTrace only
+GCA_000764615	aph(3'')-Ib	1	1	both
+GCA_000764615	aph(6)-Id	1	1	both
+GCA_000764615	armA	1	1	both
+GCA_000764615	blaCTX-M-15	2	2	both
+GCA_000764615	blaNDM-1	3	3	both
+GCA_000764615	blaOXA-1	1	1	both
+GCA_000764615	blaSHV-28	1	1	both
+GCA_000764615	ble	3	3	both
+GCA_000764615	catA1	1	1	both
+GCA_000764615	catB3	1	1	both
+GCA_000764615	dfrA12	1	1	both
+GCA_000764615	dfrA51	0	1	portal only
+GCA_000764615	emrD	1	1	both
+GCA_000764615	fosA	1	1	both
+GCA_000764615	gyrA_D87A	1	0	KlebTrace only
+GCA_000764615	gyrA_S83F	1	1	both
+GCA_000764615	kdeA	1	0	KlebTrace only
+GCA_000764615	mph(E)	1	1	both
+GCA_000764615	msr(E)	1	1	both
+GCA_000764615	oqxA	1	1	both
+GCA_000764615	oqxB	1	1	both
+GCA_000764615	parC_S80I	1	1	both
+GCA_000764615	qnrB1	1	1	both
+GCA_000764615	ramR_A19V	1	1	both
+GCA_000764615	sul1	1	1	both
+GCA_000764615	tet(D)	1	1	both
+GCA_001182445	blaKPC	1	0	KlebTrace only
+GCA_001182445	blaSHV	1	0	KlebTrace only
+GCA_001182445	blaSHV-12	1	1	both
+GCA_001182445	emrD	1	1	both
+GCA_001182445	fosA	1	1	both
+GCA_001182445	gyrA_S83I	1	1	both
+GCA_001182445	kdeA	1	0	KlebTrace only
+GCA_001182445	ompK35_E42RfsTer47	1	0	KlebTrace only
+GCA_001182445	oqxA	1	1	both
+GCA_001182445	oqxB	1	1	both
+GCA_001182445	parC_S80I	1	1	both
+GCA_019928365	aac(3)-IIe	1	1	both
+GCA_019928365	aac(6')-Ib-cr5	1	0	KlebTrace only
+GCA_019928365	aph(3'')-Ib	1	1	both
+GCA_019928365	aph(6)-Id	1	1	both
+GCA_019928365	blaCTX-M-15	1	1	both
+GCA_019928365	blaOXA	1	0	KlebTrace only
+GCA_019928365	blaOXA-1	1	1	both
+GCA_019928365	blaSHV-11	1	1	both
+GCA_019928365	blaTEM-1	1	1	both
+GCA_019928365	catB3	1	0	KlebTrace only
+GCA_019928365	dfrA14	1	0	KlebTrace only
+GCA_019928365	emrD	1	1	both
+GCA_019928365	fosA	1	1	both
+GCA_019928365	gyrA_D87A	1	0	KlebTrace only
+GCA_019928365	gyrA_S83F	1	1	both
+GCA_019928365	kdeA	1	0	KlebTrace only
+GCA_019928365	ompK35_Y76Ter	1	0	KlebTrace only
+GCA_019928365	ompK36_D135DGD	1	1	both
+GCA_019928365	parC_S80I	1	1	both
+GCA_019928365	qnrB1	1	1	both
+GCA_019928365	ramR_L111RfsTer13	1	0	KlebTrace only
+GCA_019928365	sul2	1	1	both
+GCA_019928365	tet(A)	1	1	both
+GCA_043905605	aac(6')-Ib	2	2	both
+GCA_043905605	aadA1	2	2	both
+GCA_043905605	aph(3'')-Ib	2	2	both
+GCA_043905605	aph(6)-Id	2	2	both
+GCA_043905605	armA	2	2	both
+GCA_043905605	arr-2	2	2	both
+GCA_043905605	blaCMY-16	2	2	both
+GCA_043905605	blaCTX-M-14	2	2	both
+GCA_043905605	blaOXA-10	2	2	both
+GCA_043905605	blaOXA-48	2	2	both
+GCA_043905605	blaSHV-1	2	0	KlebTrace only
+GCA_043905605	catA1	2	1	both
+GCA_043905605	cmlA5	2	2	both
+GCA_043905605	dfrA14	2	0	KlebTrace only
+GCA_043905605	emrD	1	1	both
+GCA_043905605	floR	2	2	both
+GCA_043905605	fosA	2	2	both
+GCA_043905605	gyrA_D87N	1	0	KlebTrace only
+GCA_043905605	gyrA_S83F	1	1	both
+GCA_043905605	kdeA	1	0	KlebTrace only
+GCA_043905605	mph(A)	2	2	both
+GCA_043905605	mph(E)	2	2	both
+GCA_043905605	mrx(A)	2	0	KlebTrace only
+GCA_043905605	msr(E)	2	2	both
+GCA_043905605	nfsB_Q35Ter	1	0	KlebTrace only
+GCA_043905605	ompK36_D135DD	1	1	both
+GCA_043905605	oqxA	2	2	both
+GCA_043905605	oqxB5	2	2	both
+GCA_043905605	parC_S80I	1	1	both
+GCA_043905605	qnrA6	2	2	both
+GCA_043905605	sul1	2	2	both
+GCA_043905605	sul2	2	2	both
+GCA_043905605	tet(A)	2	2	both
+GCA_049383265	aac(6')-Ib-cr5	1	0	KlebTrace only
+GCA_049383265	aph(3'')-Ib	1	1	both
+GCA_049383265	aph(6)-Id	1	1	both
+GCA_049383265	blaCTX-M-15	1	1	both
+GCA_049383265	blaKPC-2	1	1	both
+GCA_049383265	blaOXA-1	1	1	both
+GCA_049383265	blaSHV-11	1	1	both
+GCA_049383265	blaTEM-1	1	1	both
+GCA_049383265	catB3	1	1	both
+GCA_049383265	emrD	1	1	both
+GCA_049383265	fosA	1	1	both
+GCA_049383265	gyrA_S83I	1	1	both
+GCA_049383265	kdeA	1	0	KlebTrace only
+GCA_049383265	ompK35_T96PfsTer7	1	0	KlebTrace only
+GCA_049383265	ompK36_D135DGD	1	1	both
+GCA_049383265	oqxA	1	1	both
+GCA_049383265	oqxB	1	1	both
+GCA_049383265	parC_S80I	1	1	both
+GCA_049383265	qnrB2	1	1	both
+GCA_049383265	sul1	1	1	both
+GCA_049383265	sul2	1	1	both
+GCA_900774885	blaSHV-11	1	1	both
+GCA_900774885	emrD	1	1	both
+GCA_900774885	fosA	1	1	both
+GCA_900774885	kdeA	1	0	KlebTrace only
+GCA_900774885	oqxA	1	1	both
+GCA_900774885	oqxB	1	1	both

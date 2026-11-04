@@ -1,0 +1,64 @@
+check	assembly	status	detail
+gff3_valid	GCA_000567225.2	PASS	5334 features valid
+so_types	GCA_000567225.2	PASS	all types are SO terms
+seqids_match_fasta	GCA_000567225.2	PASS	5 seqids, all in the FASTA (5 sequences)
+unique_ids	GCA_000567225.2	PASS	5334 unique IDs
+cds_density	GCA_000567225.2	PASS	5058 CDS on 5.40 Mb = 0.937 per kb
+coordinates_agree	GCA_000567225.2	WARN	2 problem(s): fosA JCMW02000001.1: 5' end +0 bp, 3' end +9 bp; aac(6')-Ib3 JCMW02000002.1:54283-54834 has no Bakta CDS
+gff3_valid	GCA_000764615.1	PASS	5945 features valid
+so_types	GCA_000764615.1	WARN	1 problem(s): crispr-spacer (15)
+seqids_match_fasta	GCA_000764615.1	PASS	5 seqids, all in the FASTA (5 sequences)
+unique_ids	GCA_000764615.1	PASS	5945 unique IDs
+cds_density	GCA_000764615.1	PASS	5573 CDS on 5.99 Mb = 0.930 per kb
+coordinates_agree	GCA_000764615.1	WARN	2 problem(s): clpK CP008930.1: 5' end +0 bp, 3' end +9 bp; merR CP008933.1: 5' end +0 bp, 3' end +30 bp
+gff3_valid	GCA_001182445.1	PASS	5895 features valid
+so_types	GCA_001182445.1	PASS	all types are SO terms
+seqids_match_fasta	GCA_001182445.1	PASS	304 seqids, all in the FASTA (304 sequences)
+unique_ids	GCA_001182445.1	PASS	5895 unique IDs
+cds_density	GCA_001182445.1	PASS	5295 CDS on 5.64 Mb = 0.939 per kb
+coordinates_agree	GCA_001182445.1	WARN	1 problem(s): clpK CDFQ01000002.1: 5' end +0 bp, 3' end +9 bp
+gff3_valid	GCA_019928365.1	PASS	5674 features valid
+so_types	GCA_019928365.1	PASS	all types are SO terms
+seqids_match_fasta	GCA_019928365.1	PASS	106 seqids, all in the FASTA (106 sequences)
+unique_ids	GCA_019928365.1	PASS	5674 unique IDs
+cds_density	GCA_019928365.1	PASS	5292 CDS on 5.68 Mb = 0.931 per kb
+coordinates_agree	GCA_019928365.1	WARN	3 problem(s): clpK JAGYDM010000026.1: 5' end +0 bp, 3' end +9 bp; dfrA14 JAGYDM010000055.1:4608-5078 has no Bakta CDS; blaOXA JAGYDM010000061.1:3-737 has no Bakta CDS
+gff3_valid	GCA_043905605.1	PASS	6259 features valid
+so_types	GCA_043905605.1	WARN	1 problem(s): crispr-spacer (15)
+seqids_match_fasta	GCA_043905605.1	PASS	147 seqids, all in the FASTA (147 sequences)
+unique_ids	GCA_043905605.1	PASS	6259 unique IDs
+cds_density	GCA_043905605.1	PASS	5770 CDS on 6.02 Mb = 0.958 per kb
+coordinates_agree	GCA_043905605.1	WARN	4 problem(s): iucA DAZTLE010000033.1: 5' end +57 bp, 3' end +6 bp; dfrA14 DAZTLE010000074.1:110-580 has no Bakta CDS; rmpD DAZTLE010000086.1:485-604 has no Bakta CDS; dfrA14 DAZTLE010000137.1:151-621 has no Bakta CDS
+gff3_valid	GCA_049383265.1	PASS	5610 features valid
+so_types	GCA_049383265.1	WARN	1 problem(s): crispr-spacer (43)
+seqids_match_fasta	GCA_049383265.1	PASS	91 seqids, all in the FASTA (91 sequences)
+unique_ids	GCA_049383265.1	PASS	5610 unique IDs
+cds_density	GCA_049383265.1	PASS	5161 CDS on 5.53 Mb = 0.933 per kb
+coordinates_agree	GCA_049383265.1	WARN	1 problem(s): fosA JBMRHU010000010.1: 5' end +0 bp, 3' end +9 bp
+gff3_valid	GCA_900774885.1	PASS	6399 features valid
+so_types	GCA_900774885.1	WARN	1 problem(s): crispr-spacer (58)
+seqids_match_fasta	GCA_900774885.1	PASS	119 seqids, all in the FASTA (119 sequences)
+unique_ids	GCA_900774885.1	PASS	6399 unique IDs
+cds_density	GCA_900774885.1	PASS	5833 CDS on 6.13 Mb = 0.951 per kb
+coordinates_agree	GCA_900774885.1	PASS	36 of 36 genes agree (33 same start, 3 different start codon; 3' ends differ only by the stop codon)
+database_complete	GCA_000567225.2	PASS	5 sequences, 5334 features, 15 AMRFinderPlus calls
+database_complete	GCA_000764615.1	PASS	5 sequences, 5945 features, 32 AMRFinderPlus calls
+database_complete	GCA_001182445.1	PASS	304 sequences, 5895 features, 11 AMRFinderPlus calls
+database_complete	GCA_019928365.1	PASS	106 sequences, 5674 features, 23 AMRFinderPlus calls
+database_complete	GCA_043905605.1	PASS	147 sequences, 6259 features, 59 AMRFinderPlus calls
+database_complete	GCA_049383265.1	PASS	91 sequences, 5610 features, 21 AMRFinderPlus calls
+database_complete	GCA_900774885.1	PASS	119 sequences, 6399 features, 6 AMRFinderPlus calls
+duplicated_markers	GCA_000567225.2	PASS	single-copy chromosomal genes found once
+duplicated_markers	GCA_000764615.1	PASS	single-copy chromosomal genes found once
+duplicated_markers	GCA_001182445.1	PASS	single-copy chromosomal genes found once
+duplicated_markers	GCA_019928365.1	PASS	single-copy chromosomal genes found once
+duplicated_markers	GCA_043905605.1	WARN	2 problem(s): fosA x2; oqxA x2
+duplicated_markers	GCA_049383265.1	PASS	single-copy chromosomal genes found once
+duplicated_markers	GCA_900774885.1	PASS	single-copy chromosomal genes found once
+carbapenemase_review	GCA_000567225.2	PASS	no carbapenemase
+carbapenemase_review	GCA_000764615.1	PASS	3 carbapenemase call(s), all named, complete and in the portal
+carbapenemase_review	GCA_001182445.1	WARN	2 problem(s): blaKPC partial; carbapenemase not reported by the portal
+carbapenemase_review	GCA_019928365.1	WARN	2 problem(s): blaOXA allele not named; carbapenemase not reported by the portal
+carbapenemase_review	GCA_043905605.1	PASS	2 carbapenemase call(s), all named, complete and in the portal
+carbapenemase_review	GCA_049383265.1	PASS	1 carbapenemase call(s), all named, complete and in the portal
+carbapenemase_review	GCA_900774885.1	PASS	no carbapenemase

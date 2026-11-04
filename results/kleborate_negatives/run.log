@@ -1,0 +1,34 @@
+modules: general__species,general__contig_stats,kpsc__mlst,kpsc__amr,kpsc__resistance_score,kpsc__resistance_gene_count; inputs: 32 screen 'none' genomes from results/portal_negative_screen.tsv
+strain	species	N50	ST	resistance_score	num_resistance_genes
+GCA_900180985.1	Klebsiella pneumoniae	464824	ST48	1	10
+GCA_900180995.1	Klebsiella pneumoniae	1319118	ST336	1	14
+GCA_900181375.1	Klebsiella pneumoniae	194120	ST15	1	15
+GCA_900181455.1	Klebsiella pneumoniae	208918	ST48	1	16
+GCA_900182105.1	Klebsiella pneumoniae	176713	ST540	1	20
+GCA_000567225.2	Klebsiella pneumoniae	4974003	ST17	0	7
+GCA_022316865.1	Klebsiella pneumoniae	88041	ST258-1LV	1	11
+GCA_002948565.1	Klebsiella pneumoniae	5451057	ST14	1	20
+GCA_003571605.1	Klebsiella pneumoniae	5312321	ST16	1	14
+GCA_002202275.1	Klebsiella pneumoniae	5432669	ST1161	1	15
+GCA_003571705.1	Klebsiella pneumoniae	5280811	ST340	1	16
+GCA_022089415.1	Klebsiella pneumoniae	172168	ST307	1	13
+GCA_022089815.1	Klebsiella pneumoniae	248430	ST462	1	24
+GCA_022063625.1	Klebsiella pneumoniae	140286	ST307	1	8
+GCA_022063745.1	Klebsiella pneumoniae	139597	ST307	1	8
+GCA_022072905.1	Klebsiella pneumoniae	161140	ST307	1	15
+GCA_022083355.1	Klebsiella pneumoniae	175503	ST36	1	6
+GCA_022083815.1	Klebsiella pneumoniae	179837	ST307	1	7
+GCA_022084115.1	Klebsiella pneumoniae	186687	ST3578	0	0
+GCA_022085605.1	Klebsiella pneumoniae	96406	ST307	1	14
+GCA_022087965.1	Klebsiella pneumoniae	79547	ST405	1	22
+GCA_022070705.1	Klebsiella pneumoniae	113061	ST340	0	29
+GCA_022080535.1	Klebsiella pneumoniae	100654	ST258	1	16
+GCA_022081055.1	Klebsiella pneumoniae	86486	ST307	1	8
+GCA_022081815.1	Klebsiella pneumoniae	107384	ST307	1	2
+GCA_022060385.1	Klebsiella pneumoniae	70822	ST258	1	16
+GCA_022299675.1	Klebsiella pneumoniae	210150	ST30	1	18
+GCA_020407035.1	Klebsiella pneumoniae	100360	ST3705	0	13
+GCA_030026945.2	Klebsiella pneumoniae	176541	ST6407	1	6
+GCA_031045855.2	Klebsiella pneumoniae	330099	ST2154	1	34
+GCA_033726815.1	Klebsiella pneumoniae	307304	ST42	0	18
+GCA_049383445.1	Klebsiella pneumoniae	90830	ST392	1	13

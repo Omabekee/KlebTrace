@@ -1,0 +1,12 @@
+modules: general__species,general__contig_stats,kpsc__mlst,klebsiella__ybst,klebsiella__cbst,klebsiella__abst,klebsiella__smst,klebsiella__rmst,kpsc__virulence_score,klebsiella__rmpa2,klebsiella__peg-344,kpsc__amr,kpsc__resistance_score,kpsc__resistance_class_count,kpsc__resistance_gene_count,kpsc__cipro_prediction,kpsc__wzi,kpsc__kaptive,kpsc__mrk
+strain	species	N50	ST	virulence_score	resistance_score	num_resistance_classes	num_resistance_genes
+GCA_000764615.1	Klebsiella pneumoniae	5317001	ST15	1	2	10	19
+GCA_001182445.1	Klebsiella pneumoniae	196307	ST258	1	0	1	0
+GCA_019928365.1	Klebsiella pneumoniae	213070	ST38	1	2	8	12
+GCA_043905605.1	Klebsiella pneumoniae	148495	ST383	3	2	11	42
+GCA_049383265.1	Klebsiella pneumoniae	154862	ST392	1	2	6	10
+GCA_900774885.1	Klebsiella pneumoniae	242549	ST12	0	0	0	0
+
+real	3m49.913s
+user	3m57.659s
+sys	0m8.877s

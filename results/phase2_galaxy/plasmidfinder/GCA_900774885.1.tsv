@@ -1,0 +1,6 @@
+Database	Plasmid	Identity	Query / Template length	Contig	Position in contig	Note	Accession number
+enterobacteriales	IncFIB(K)	98.93	560 / 560	CAAGWD010000046.1 Klebsiella pneumoniae strain 5012STDY7312591 genome assembly, contig: ERS2179090SCcontig000046	3750..4309		JN233704
+enterobacteriales	IncFII(K)	97.97	148 / 148	CAAGWD010000032.1 Klebsiella pneumoniae strain 5012STDY7312591 genome assembly, contig: ERS2179090SCcontig000032	19026..19173		CP000648
+enterobacteriales	IncFII(K)	99.32	148 / 148	CAAGWD010000051.1 Klebsiella pneumoniae strain 5012STDY7312591 genome assembly, contig: ERS2179090SCcontig000051	5486..5633		CP000648
+enterobacteriales	IncR	100.0	251 / 251	CAAGWD010000028.1 Klebsiella pneumoniae strain 5012STDY7312591 genome assembly, contig: ERS2179090SCcontig000028	46209..46459		DQ449578
+enterobacteriales	repB(R1701)	99.2	623 / 623	CAAGWD010000040.1 Klebsiella pneumoniae strain 5012STDY7312591 genome assembly, contig: ERS2179090SCcontig000040	19139..19761		CP039970

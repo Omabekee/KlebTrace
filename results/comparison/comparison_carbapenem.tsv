@@ -1,0 +1,8 @@
+assembly	country	region	phenotype	mic_mg_l	selection_group	portal_carbapenemase	klebtrace_carbapenemase	carbapenemase_agree	portal_porin_changes	klebtrace_porin_changes	klebtrace_explains_phenotype	portal_explains_phenotype	n_portal_amr_calls	n_klebtrace_amr_calls
+GCA_000764615.1	Nepal	Asia	resistant		resistant_with_carbapenemase	blaNDM-1 (x3)	blaNDM-1 (x3)	yes	none	none	yes	yes	29	32
+GCA_049383265.1	Brazil	Americas	resistant	>128	resistant_with_carbapenemase	blaKPC-2	blaKPC-2	yes	ompK36_D135DGD	ompK35_T96PfsTer7;ompK36_D135DGD	yes	yes	18	21
+GCA_043905605.1	Tunisia	Africa	resistant	>32	resistant_with_carbapenemase	blaOXA-48 (x2)	blaOXA-48 (x2)	yes	ompK36_D135DD	ompK36_D135DD	yes	yes	49	59
+GCA_019928365.1	Kenya	Africa	resistant	>=16	portal_negative_carbapenemase_on_reannotation	none	blaOXA	no	ompK36_D135DGD	ompK35_Y76Ter;ompK36_D135DGD	yes	no (genotype predicts susceptible)	15	23
+GCA_001182445.1	Italy	Europe	resistant	>32	portal_negative_carbapenemase_on_reannotation	none	blaKPC [partial]	no	none	ompK35_E42RfsTer47	yes	no (genotype predicts susceptible)	7	11
+GCA_900774885.1	Saint Lucia	Americas	susceptible		susceptible	none	none	yes	none	none	yes	yes	5	6
+GCA_000567225.2	United States of America	Americas	resistant	>32	resistant_no_carbapenemase_confirmed	none	none	yes	none	ompK36_G36GALLNKTer	no (genotype predicts susceptible)	no (genotype predicts susceptible)	10	15

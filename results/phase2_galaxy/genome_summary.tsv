@@ -1,0 +1,8 @@
+assembly	n_sequences	total_bp	n50_bp	largest_contig_bp	carbapenemase_genes	carbapenem_porin_changes	other_esbl_ampc	virulence_loci	n_amrfinder_calls	n_partial_calls	plasmid_replicons	integrons_complete	integrons_in0	integrons_calin	n_is_elements	qc_flags
+GCA_000567225.2	5	5399523	4974003	4974003	none	ompK36_G36GALLNKTer	none	none	16	0	IncC;IncR	1	0	0	46	none
+GCA_000764615.1	5	5990738	5317001	5317001	blaNDM-1 (x3)	none	blaCTX-M-15 (x2);blaOXA-1	ybtP;ybtQ	69	1	IncFIB(K);IncFIB(pKPHS1);IncFIB(pNDM-Mar);IncFII(K);IncHI1B(pNDM-MAR);repB(R1701)	1	0	1	92	none
+GCA_001182445.1	304	5637080	196307	429889	blaKPC [partial] [closest KPC-2]	ompK35_E42RfsTer47	blaSHV-12	ybtP;ybtQ	36	11	Col(MG828);ColRNAI;IncFIB(K);IncFII(K);IncX3	0	0	0	63	fragmented assembly (304 sequences);carbapenemase gene partial at contig end;carbapenemase allele not named
+GCA_019928365.1	106	5684112	213070	372377	blaOXA [closest OXA-232]	ompK35_Y76Ter;ompK36_D135DGD	blaCTX-M-15;blaOXA-1	ybtP;ybtQ	48	1	Col440I;Col440II;ColKP3;IncFIB(K);IncFII(K)	1	0	1	42	carbapenemase allele not named
+GCA_043905605.1	147	6024081	148495	289432	blaOXA-48 (x2)	ompK36_D135DD	blaCMY-16 (x2);blaCTX-M-14 (x2);blaOXA-10 (x2)	iucA;iucB;iucC;iutA;peg-344;rmpA;rmpA2;rmpC;rmpD	79	4	IncC;IncFIB(pNDM-Mar);IncHI1B(pNDM-MAR);IncL	0	1	2	46	duplicated chromosomal genes: fosA,oqxA
+GCA_049383265.1	91	5530017	154862	708878	blaKPC-2	ompK35_T96PfsTer7;ompK36_D135DGD	blaCTX-M-15;blaOXA-1	ybtP;ybtQ	45	2	IncFIB(K);IncFII(K);IncN	0	0	1	37	none
+GCA_900774885.1	119	6133985	242549	445414	none	none	none	none	36	0	IncFIB(K);IncFII(K);IncR;repB(R1701)	0	0	0	94	none

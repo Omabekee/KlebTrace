@@ -1,0 +1,8 @@
+# integron_finder 2.0.5 
+# cmd: integron_finder /corral4/main/objects/8/8/6/dataset_8861b8ff-77e0-4c58-8114-1f45e4740ba1.dat --cpu 1 --keep-tmp --local-max --promoter-attI -dt 4000 --calin-threshold 2 --max-attc-size 200 --min-attc-size 40
+ID_replicon	CALIN	complete	In0	topology	size
+CP008929.1	0	0	0	lin	5317001
+CP008930.1	0	0	0	lin	187571
+CP008931.1	0	0	0	lin	111693
+CP008932.1	0	0	0	lin	69947
+CP008933.1	1	1	0	lin	304526

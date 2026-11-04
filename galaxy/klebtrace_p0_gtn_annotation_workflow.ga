@@ -1,0 +1,427 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "KlebTrace P0 \u2013 GTN bacterial annotation workflow (MRSA KUN1163)",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "DRR187559_contigs.fasta"
+                }
+            ],
+            "label": "DRR187559_contigs.fasta",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 10,
+                "top": 10
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": null}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "74270c97-5b33-4749-b87e-1b9a3ed5059b",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bakta/bakta/1.9.4+galaxy3",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "input_option|input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Bakta",
+            "outputs": [
+                {
+                    "name": "annotation_tsv",
+                    "type": "tabular"
+                },
+                {
+                    "name": "annotation_gff3",
+                    "type": "gff3"
+                },
+                {
+                    "name": "annotation_ffn",
+                    "type": "fasta"
+                },
+                {
+                    "name": "summary_txt",
+                    "type": "txt"
+                },
+                {
+                    "name": "annotation_plot",
+                    "type": "svg"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bakta/bakta/1.9.4+galaxy3",
+            "tool_shed_repository": {
+                "changeset_revision": "25f3b474ca6f",
+                "name": "bakta",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"annotation\": {\"complete\": false, \"prodigal\": null, \"translation_table\": \"11\", \"keep_contig_headers\": true, \"replicons\": null, \"compliant\": false, \"proteins\": null, \"meta\": false, \"regions\": null}, \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"input_option\": {\"input_file\": null, \"min_contig_length\": null, \"bakta_db_select\": \"V5.1_2024-01-19\", \"amrfinder_db_select\": \"amrfinderplus_V3.12_2024-05-02.2\"}, \"organism\": {\"genus\": null, \"species\": null, \"strain\": null, \"plasmid\": null}, \"output_files\": {\"output_selection\": [\"file_tsv\", \"file_gff3\", \"file_ffn\", \"file_plot\", \"sum_txt\"]}, \"workflow\": {\"skip_analysis\": null}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "1.9.4+galaxy3",
+            "type": "tool",
+            "uuid": "0cee2415-82e4-4c37-be85-cb14c89ef975",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/plasmidfinder/plasmidfinder/2.1.6+galaxy1",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input|input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "PlasmidFinder",
+            "outputs": [
+                {
+                    "name": "hit_file",
+                    "type": "fasta"
+                },
+                {
+                    "name": "plasmid_file",
+                    "type": "fasta"
+                },
+                {
+                    "name": "result_file",
+                    "type": "tabular"
+                },
+                {
+                    "name": "raw_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 130
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/plasmidfinder/plasmidfinder/2.1.6+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "7075b7a5441b",
+                "name": "plasmidfinder",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"input\": {\"input_file\": null, \"database_name\": \"plasmidfinder_81c11f4_2023_12_04\"}, \"options\": {\"min_cov\": \"0.6\", \"threshold\": \"0.95\"}, \"output_files\": {\"output_selection\": [\"hit_fasta\", \"plasmid_fasta\", \"result_tsv\", \"result_txt\"]}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "2.1.6+galaxy1",
+            "type": "tool",
+            "uuid": "c6e148e5-a098-4c6e-8eac-3e6051422ddb",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/integron_finder/integron_finder/2.0.5+galaxy0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "sequence": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Integron Finder",
+            "outputs": [
+                {
+                    "name": "integrons_table",
+                    "type": "tsv"
+                },
+                {
+                    "name": "summary",
+                    "type": "tsv"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 250
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/integron_finder/integron_finder/2.0.5+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "bfd290fe1588",
+                "name": "integron_finder",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"gbk\": false, \"local_max\": true, \"no_logfile\": true, \"pdf\": false, \"promoter_attI\": true, \"sequence\": null, \"settings\": {\"attc_settings\": {\"dist_thresh\": \"4000\", \"calin_threshold\": \"2\", \"max_attc_size\": \"200\", \"min_attc_size\": \"40\", \"keep_palindromes\": false, \"covar_matrix\": null}, \"protein_settings\": {\"no_proteins\": false, \"union_integrases\": false, \"func_annot\": false}}, \"topology_file\": null, \"type_replicon\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "2.0.5+galaxy0",
+            "type": "tool",
+            "uuid": "11f26f01-66c4-47c3-bde8-e4e7b73ece32",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/isescan/isescan/1.7.2.3+galaxy1",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "ISEScan",
+            "outputs": [
+                {
+                    "name": "logfile",
+                    "type": "txt"
+                },
+                {
+                    "name": "summary",
+                    "type": "tabular"
+                },
+                {
+                    "name": "all_results",
+                    "type": "tabular"
+                },
+                {
+                    "name": "annotation",
+                    "type": "gff"
+                },
+                {
+                    "name": "is_fasta",
+                    "type": "fasta"
+                },
+                {
+                    "name": "orf_fna",
+                    "type": "fasta"
+                },
+                {
+                    "name": "orf_faa",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 370
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/isescan/isescan/1.7.2.3+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "9e776e7fab4f",
+                "name": "isescan",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"input_file\": null, \"log_activate\": true, \"remove_short_is\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "1.7.2.3+galaxy1",
+            "type": "tool",
+            "uuid": "9bdd7f39-65ef-4014-a837-a99bd5c0fc8f",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "infile": {
+                    "id": 2,
+                    "output_name": "result_file"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Replace Text",
+            "outputs": [
+                {
+                    "name": "outfile",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 450,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "86755160afbf",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"infile\": null, \"replacements\": [{\"__index__\": 0, \"column\": \"6\", \"find_pattern\": \"(.*)\\\\.\\\\.(.*)\", \"replace_pattern\": \"\\\\\\\\1\\\\t\\\\\\\\2\"}, {\"__index__\": 1, \"column\": \"5\", \"find_pattern\": \"(.*)( len.*)\", \"replace_pattern\": \"\\\\\\\\1\"}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "9.3+galaxy1",
+            "type": "tool",
+            "uuid": "d5f7338a-3897-49fe-ac12-b38d4df4536e",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/9.11+galaxy0",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "infile": {
+                    "id": 5,
+                    "output_name": "outfile"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Select last",
+            "outputs": [
+                {
+                    "name": "outfile",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 670,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/9.11+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "30b60202d990",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"complement\": \"+\", \"infile\": null, \"num_lines\": \"2\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "9.11+galaxy0",
+            "type": "tool",
+            "uuid": "9dfb0b92-f484-4811-8398-32b5b795fbc8",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/tbl2gff3/tbl2gff3/1.2",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "table": {
+                    "id": 6,
+                    "output_name": "outfile"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Table to GFF3",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "gff3"
+                }
+            ],
+            "position": {
+                "left": 890,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/tbl2gff3/tbl2gff3/1.2",
+            "tool_shed_repository": {
+                "changeset_revision": "4a7f4b0cc0a3",
+                "name": "tbl2gff3",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"tabular\", \"attributes\": [{\"__index__\": 0, \"key\": \"name\", \"val\": \"8\"}, {\"__index__\": 1, \"key\": \"accession\", \"val\": \"9\"}], \"begin\": \"6\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"end\": \"7\", \"rid\": \"5\", \"score\": \"3\", \"source\": \"1\", \"strand\": {\"strand_select\": \"infer\", \"__current_case__\": 1}, \"table\": null, \"type\": \"2\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "1.2",
+            "type": "tool",
+            "uuid": "d938f6b2-4257-4fab-b746-0786d1ff78c8",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.11+galaxy1",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "reference_genome|genome": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "track_groups_0|data_tracks_0|data_format|annotation": {
+                    "id": 1,
+                    "output_name": "annotation_gff3"
+                },
+                "track_groups_1|data_tracks_0|data_format|annotation": {
+                    "id": 7,
+                    "output_name": "output"
+                },
+                "track_groups_2|data_tracks_0|data_format|annotation": {
+                    "id": 4,
+                    "output_name": "annotation"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "JBrowse",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "html"
+                }
+            ],
+            "position": {
+                "left": 1110,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.11+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "1483285bdb7a",
+                "name": "jbrowse",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fasta\", \"action\": {\"action_select\": \"create\", \"__current_case__\": 0}, \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"gencode\": \"11\", \"jbgen\": {\"defaultLocation\": \"\", \"trackPadding\": \"20\", \"shareLink\": true, \"aboutDescription\": \"\", \"show_tracklist\": true, \"show_nav\": true, \"show_overview\": true, \"show_menu\": true, \"hideGenomeOptions\": false}, \"plugins\": {\"BlastView\": true, \"ComboTrackSelector\": false, \"GCContent\": false}, \"reference_genome\": {\"genome_type_select\": \"history\", \"__current_case__\": 1, \"genome\": null}, \"standalone\": \"complete\", \"track_groups\": [{\"__index__\": 0, \"category\": \"Bakta\", \"data_tracks\": [{\"__index__\": 0, \"data_format\": {\"data_format_select\": \"gene_calls\", \"__current_case__\": 2, \"annotation\": null, \"match_part\": {\"match_part_select\": false, \"__current_case__\": 1}, \"index\": false, \"track_config\": {\"track_class\": \"NeatCanvasFeatures/View/Track/NeatFeatures\", \"__current_case__\": 4, \"canvas_options\": {\"transcriptType\": \"\", \"subParts\": \"\", \"impliedUTRs\": false}}, \"jbstyle\": {\"style_classname\": \"feature\", \"style_label\": \"product,name,id\", \"style_description\": \"note,description\", \"style_height\": \"10px\", \"max_height\": \"600\"}, \"jbcolor_scale\": {\"color_score\": {\"color_score_select\": \"none\", \"__current_case__\": 0, \"color\": {\"color_select\": \"automatic\", \"__current_case__\": 0}}}, \"jb_custom_config\": {\"option\": []}, \"jbmenu\": {\"track_menu\": []}, \"track_visibility\": \"default_on\", \"override_apollo_plugins\": \"False\", \"override_apollo_drag\": \"False\"}}]}, {\"__index__\": 1, \"category\": \"Plasmid sequences\", \"data_tracks\": [{\"__index__\": 0, \"data_format\": {\"data_format_select\": \"gene_calls\", \"__current_case__\": 2, \"annotation\": null, \"match_part\": {\"match_part_select\": false, \"__current_case__\": 1}, \"index\": false, \"track_config\": {\"track_class\": \"NeatCanvasFeatures/View/Track/NeatFeatures\", \"__current_case__\": 4, \"canvas_options\": {\"transcriptType\": \"\", \"subParts\": \"\", \"impliedUTRs\": false}}, \"jbstyle\": {\"style_classname\": \"feature\", \"style_label\": \"product,name,id\", \"style_description\": \"note,description\", \"style_height\": \"10px\", \"max_height\": \"600\"}, \"jbcolor_scale\": {\"color_score\": {\"color_score_select\": \"none\", \"__current_case__\": 0, \"color\": {\"color_select\": \"automatic\", \"__current_case__\": 0}}}, \"jb_custom_config\": {\"option\": []}, \"jbmenu\": {\"track_menu\": []}, \"track_visibility\": \"default_on\", \"override_apollo_plugins\": \"False\", \"override_apollo_drag\": \"False\"}}]}, {\"__index__\": 2, \"category\": \"IS elements\", \"data_tracks\": [{\"__index__\": 0, \"data_format\": {\"data_format_select\": \"gene_calls\", \"__current_case__\": 2, \"annotation\": null, \"match_part\": {\"match_part_select\": false, \"__current_case__\": 1}, \"index\": false, \"track_config\": {\"track_class\": \"NeatCanvasFeatures/View/Track/NeatFeatures\", \"__current_case__\": 4, \"canvas_options\": {\"transcriptType\": \"\", \"subParts\": \"\", \"impliedUTRs\": false}}, \"jbstyle\": {\"style_classname\": \"feature\", \"style_label\": \"product,name,id\", \"style_description\": \"note,description\", \"style_height\": \"10px\", \"max_height\": \"600\"}, \"jbcolor_scale\": {\"color_score\": {\"color_score_select\": \"none\", \"__current_case__\": 0, \"color\": {\"color_select\": \"automatic\", \"__current_case__\": 0}}}, \"jb_custom_config\": {\"option\": []}, \"jbmenu\": {\"track_menu\": []}, \"track_visibility\": \"default_on\", \"override_apollo_plugins\": \"False\", \"override_apollo_drag\": \"False\"}}]}], \"uglyTestingHack\": \"\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "1.16.11+galaxy1",
+            "type": "tool",
+            "uuid": "73a6c667-9f9b-492a-a513-1db7c4d43d92",
+            "when": null,
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "553d06ff-0bfe-497e-8971-6f878a50abb2",
+    "version": 0
+}

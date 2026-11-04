@@ -1,0 +1,392 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "KlebTrace: annotates K. pneumoniae genomes with Bakta, AMRFinderPlus, PlasmidFinder, IntegronFinder and ISEScan, using a dataset collection input",
+    "comments": [],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0000-0002-5335-8562",
+            "name": "Chioma Oselu"
+        }
+    ],
+    "format-version": "0.1",
+    "license": "MIT",
+    "name": "KlebTrace \u2013 K. pneumoniae annotation workflow v0.2",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "Phase 2: Phase 0 workflow minus GFF3/JBrowse, plus AMRFinderPlus (K. pneumoniae, mutation_all, report_common)",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Phase 2: Phase 0 workflow minus GFF3/JBrowse, plus AMRFinderPlus (K. pneumoniae, mutation_all, report_common)",
+                    "name": "kpneumo_genomes"
+                }
+            ],
+            "label": "kpneumo_genomes",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "left": 0.0,
+                "top": 808.0937111563954
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"format\": [\"fasta\"], \"tag\": null, \"collection_type\": \"list\", \"fields\": null, \"column_definitions\": null}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "40fb808e-bbd2-4b71-8d94-3d39e14de3e7",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/integron_finder/integron_finder/2.0.5+galaxy0",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "sequence": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Integron Finder",
+            "outputs": [
+                {
+                    "name": "integrons_table",
+                    "type": "tsv"
+                },
+                {
+                    "name": "summary",
+                    "type": "tsv"
+                }
+            ],
+            "position": {
+                "left": 859.7500720372082,
+                "top": 0.0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/integron_finder/integron_finder/2.0.5+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "bfd290fe1588",
+                "name": "integron_finder",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"gbk\": false, \"local_max\": true, \"no_logfile\": true, \"pdf\": false, \"promoter_attI\": true, \"sequence\": {\"__class__\": \"ConnectedValue\"}, \"settings\": {\"attc_settings\": {\"dist_thresh\": \"4000\", \"calin_threshold\": \"2\", \"max_attc_size\": \"200\", \"min_attc_size\": \"40\", \"keep_palindromes\": false, \"covar_matrix\": null}, \"protein_settings\": {\"no_proteins\": false, \"union_integrases\": false, \"func_annot\": false}}, \"topology_file\": null, \"type_replicon\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "2.0.5+galaxy0",
+            "type": "tool",
+            "uuid": "11f26f01-66c4-47c3-bde8-e4e7b73ece32",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "integrons_table",
+                    "output_name": "integrons_table",
+                    "uuid": "fbddcadb-af55-4385-b492-27f14a4561f7"
+                },
+                {
+                    "label": "integronfinder_summary",
+                    "output_name": "summary",
+                    "uuid": "529c7b78-7aee-41ba-af67-0ed6c7ec50bf"
+                }
+            ]
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/isescan/isescan/1.7.2.3+galaxy1",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "ISEScan",
+            "outputs": [
+                {
+                    "name": "logfile",
+                    "type": "txt"
+                },
+                {
+                    "name": "summary",
+                    "type": "tabular"
+                },
+                {
+                    "name": "all_results",
+                    "type": "tabular"
+                },
+                {
+                    "name": "annotation",
+                    "type": "gff"
+                },
+                {
+                    "name": "is_fasta",
+                    "type": "fasta"
+                },
+                {
+                    "name": "orf_fna",
+                    "type": "fasta"
+                },
+                {
+                    "name": "orf_faa",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "left": 861.3906268067401,
+                "top": 265.23441155819785
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/isescan/isescan/1.7.2.3+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "9e776e7fab4f",
+                "name": "isescan",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"log_activate\": true, \"remove_short_is\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "1.7.2.3+galaxy1",
+            "type": "tool",
+            "uuid": "9bdd7f39-65ef-4014-a837-a99bd5c0fc8f",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "isescan_annotation_gff",
+                    "output_name": "annotation",
+                    "uuid": "d830c9ff-92b1-4b9d-a047-6da8ea8c1c91"
+                },
+                {
+                    "label": "isescan_summary",
+                    "output_name": "summary",
+                    "uuid": "ca3a9fd5-1173-4abc-88d5-db777714e26b"
+                }
+            ]
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/amrfinderplus/amrfinderplus/4.2.7+galaxy0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "input_option|input_mode|nucleotide_input": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "AMRFinderPlus",
+            "outputs": [
+                {
+                    "name": "amrfinderplus_report",
+                    "type": "tabular"
+                },
+                {
+                    "name": "mutation_all_report",
+                    "type": "tabular"
+                },
+                {
+                    "name": "nucleotide_output",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "left": 859.7515162395217,
+                "top": 572.2830014818309
+            },
+            "post_job_actions": {
+                "EmailActionamrfinderplus_report": {
+                    "action_arguments": {
+                        "host": "usegalaxy.org"
+                    },
+                    "action_type": "EmailAction",
+                    "output_name": "amrfinderplus_report"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/amrfinderplus/amrfinderplus/4.2.7+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "96112e4c5e26",
+                "name": "amrfinderplus",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input_option\": {\"amrfinder_db_select\": \"amrfinderplus_V4.2_2026-05-15.1\", \"input_mode\": {\"input_select\": \"nucleotide\", \"__current_case__\": 0, \"nucleotide_input\": {\"__class__\": \"ConnectedValue\"}, \"nucleotide_flank5_size\": \"0\"}}, \"options\": {\"ident_min\": \"-1.0\", \"coverage_min\": \"0.5\", \"translation_table\": \"11\", \"plus\": true, \"report_all_equal\": false, \"print_node\": false, \"name\": null, \"add_version_columns\": false}, \"organism_options\": {\"organism_conditionnal\": {\"organism_select\": \"add_organism\", \"__current_case__\": 0, \"organism\": \"Klebsiella_pneumoniae\", \"mutation_all\": true, \"report_common\": true}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "4.2.7+galaxy0",
+            "type": "tool",
+            "uuid": "fe0a88a9-298a-4145-99ba-998f152bc5be",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "amrfinderplus_nucleotide_output",
+                    "output_name": "nucleotide_output",
+                    "uuid": "a71fa733-f31f-4d79-a668-17102ef00049"
+                },
+                {
+                    "label": "amrfinderplus_mutation_all_report",
+                    "output_name": "mutation_all_report",
+                    "uuid": "31e2b021-cd17-4f19-84f7-540d1f900960"
+                },
+                {
+                    "label": "amrfinderplus_report",
+                    "output_name": "amrfinderplus_report",
+                    "uuid": "4e0538ff-8b6f-442c-b8ef-65cce2f9d6e5"
+                }
+            ]
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bakta/bakta/1.9.4+galaxy3",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "input_option|input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Bakta",
+                    "name": "input_option"
+                }
+            ],
+            "label": null,
+            "name": "Bakta",
+            "outputs": [
+                {
+                    "name": "annotation_tsv",
+                    "type": "tabular"
+                },
+                {
+                    "name": "annotation_gff3",
+                    "type": "gff3"
+                },
+                {
+                    "name": "annotation_ffn",
+                    "type": "fasta"
+                },
+                {
+                    "name": "summary_txt",
+                    "type": "txt"
+                },
+                {
+                    "name": "annotation_plot",
+                    "type": "svg"
+                }
+            ],
+            "position": {
+                "left": 871.2306047297909,
+                "top": 836.0451064762617
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bakta/bakta/1.9.4+galaxy3",
+            "tool_shed_repository": {
+                "changeset_revision": "25f3b474ca6f",
+                "name": "bakta",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"annotation\": {\"complete\": false, \"prodigal\": null, \"translation_table\": \"11\", \"keep_contig_headers\": true, \"replicons\": null, \"compliant\": false, \"proteins\": null, \"meta\": false, \"regions\": null}, \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"input_option\": {\"input_file\": {\"__class__\": \"ConnectedValue\"}, \"min_contig_length\": null, \"bakta_db_select\": \"V5.1_2024-01-19\", \"amrfinder_db_select\": \"amrfinderplus_V3.12_2024-05-02.2\"}, \"organism\": {\"genus\": null, \"species\": null, \"strain\": null, \"plasmid\": null}, \"output_files\": {\"output_selection\": [\"file_tsv\", \"file_gff3\", \"file_ffn\", \"file_plot\", \"sum_txt\"]}, \"workflow\": {\"skip_analysis\": null}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "1.9.4+galaxy3",
+            "type": "tool",
+            "uuid": "0cee2415-82e4-4c37-be85-cb14c89ef975",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "bakta_summary",
+                    "output_name": "summary_txt",
+                    "uuid": "c6d1deab-cfb9-4599-bb35-3a34b7d7c087"
+                },
+                {
+                    "label": "bakta_tsv",
+                    "output_name": "annotation_tsv",
+                    "uuid": "683087cc-5d17-4258-97cc-5545a14873f2"
+                },
+                {
+                    "label": "bakta_gff3",
+                    "output_name": "annotation_gff3",
+                    "uuid": "75badadb-eb4a-4eae-80a5-cd59d071318d"
+                }
+            ]
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/plasmidfinder/plasmidfinder/2.1.6+galaxy1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input|input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool PlasmidFinder",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "PlasmidFinder",
+            "outputs": [
+                {
+                    "name": "hit_file",
+                    "type": "fasta"
+                },
+                {
+                    "name": "plasmid_file",
+                    "type": "fasta"
+                },
+                {
+                    "name": "result_file",
+                    "type": "tabular"
+                },
+                {
+                    "name": "raw_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 857.3207310392759,
+                "top": 1270.1293605560115
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/plasmidfinder/plasmidfinder/2.1.6+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "7075b7a5441b",
+                "name": "plasmidfinder",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"input\": {\"input_file\": {\"__class__\": \"ConnectedValue\"}, \"database_name\": \"plasmidfinder_81c11f4_2023_12_04\"}, \"options\": {\"min_cov\": \"0.6\", \"threshold\": \"0.95\"}, \"output_files\": {\"output_selection\": [\"hit_fasta\", \"plasmid_fasta\", \"result_tsv\", \"result_txt\"]}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_uuid": null,
+            "tool_version": "2.1.6+galaxy1",
+            "type": "tool",
+            "uuid": "c6e148e5-a098-4c6e-8eac-3e6051422ddb",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "plasmidfinder_result_file",
+                    "output_name": "result_file",
+                    "uuid": "4c587925-43ce-4869-b648-074e4c4146a2"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "e08b55b2-1281-4b64-8757-b497b4355a92",
+    "version": 6
+}

@@ -1,0 +1,47 @@
+# Large or regenerable data
+data/genomes/
+*.fasta
+*.fa
+*.fna
+*.fasta.gz
+*.fna.gz
+*.parquet
+!tests/test_data/*.parquet
+
+# Annotation outputs (keep only curated examples in results/)
+annotations/
+*.gbff
+*.embl
+
+# Database files
+*.db
+*.sqlite
+*.duckdb
+
+# Nextflow
+work/
+.nextflow/
+.nextflow.log*
+nextflow/results/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# System
+.DS_Store
+
+# Personal planning documents and third-party reference data (see data/README.md)
+Ensembl Microbes role and Klebsiella annotation project plan.docx
+species_EnsemblBacteria.txt
+KlebTrace Phase 2 Galaxy annotation guide.docx
+KlebTrace Phase 2 questions and answers.docx
+
+# Pipeline outputs and large reference databases
+results/pipeline/
+results/pipeline_test/
+databases/
+results/phase2_galaxy/bakta_gff3/
+results/merged/
