@@ -1,4 +1,4 @@
-// KlebTrace's own Python steps. They run in the klebtrace conda environment
+// KlebTrace's Python steps. They run in the klebtrace conda environment
 // (environment.yml), using the scripts in ../scripts.
 
 process MERGE_ANNOTATIONS {
