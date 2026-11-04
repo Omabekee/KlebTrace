@@ -76,7 +76,7 @@ pytest tests/
 
 ## Author
 
-Chioma B Oselu, EMBL-UNESCO Fellow, EMBL-EBI
+Chioma B Oselu
 
 ## Licence
 
