@@ -1,0 +1,7 @@
+step	galaxy_one_genome	pipeline_same_genome	pipeline_all_seven_genomes	notes
+Bakta 1.9.4	37 min	not run	not run	Galaxy output reused by the pipeline (full database 39.4 GB)
+AMRFinderPlus 4.2.7	3 min	8 min	18.8 min of task time	pipeline gives each task 2 CPUs on a 4-CPU workstation; Galaxy's CPU allocation is not shown
+PlasmidFinder 2.1.6	31 s	24 s	2.5 min of task time
+Kleborate 3.3.0b1	not on usegalaxy.org	59 s	5.2 min of task time	run locally in Phase 2
+merge, database load and QC	not in Galaxy	-	15 s	KlebTrace scripts
+total	about 41 min (Bakta, AMRFinderPlus, PlasmidFinder)	-	13 min 54 s wall clock	pipeline excludes Bakta; Galaxy times are job run times for GCA_000764615.1, without queue time

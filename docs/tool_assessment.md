@@ -72,7 +72,7 @@ From `scripts/assess_accuracy.py` (`results/tool_assessment/accuracy*.tsv`), on 
 |---|---|---|---|---|
 | Output | GFF3, GenBank, EMBL, TSV | TSV | TSV (one row per genome) | TSV, JSON |
 | Conversion for Ensembl | none (GFF3 already); rename sequences | TSV to GFF3 (`merge_annotations.py`) | none possible as a track; metadata only | TSV to GFF3 (`merge_annotations.py`) |
-| Run time per genome (workstation, 2 CPUs) | 10 to 30 min in Galaxy (estimate from the Phase 2 guide; not rerun) | about 1 min (8 min for the 6 Mb complete genome) | 42 s | 21 s |
+| Run time per genome (workstation, 2 CPUs) | 37 min in Galaxy for the 6 Mb complete genome (not rerun) | about 1 min in the pipeline (8 min for the 6 Mb complete genome, 3 min for it in Galaxy) | 42 s | 21 s (31 s in Galaxy for the complete genome) |
 | Database | 39.4 GB full, 1.5 GB light | 246 MB indexed | bundled | under 1 MB |
 | Container (quay.io/biocontainers) | 426 MB | 313 MB | 1.5 GB | 373 MB |
 | Licence | GPL-3.0 | public domain (US government work) | GPL-3.0 | Apache-2.0 |

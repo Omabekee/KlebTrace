@@ -135,7 +135,7 @@ AMRFinderPlus run on the DNA explained the most laboratory results. The differen
 | | Bakta | AMRFinderPlus | Kleborate | PlasmidFinder |
 |---|---|---|---|---|
 | Output | GFF3 | TSV, needs conversion | one row per genome, no positions | TSV, needs conversion |
-| Run time per genome | 10 to 30 min (Galaxy) | about 1 min | 42 s | 21 s |
+| Run time per genome | 37 min (Galaxy) | 3 min (Galaxy), about 1 min (pipeline) | 42 s | 21 to 31 s |
 | Database | 39.4 GB | 246 MB | included | under 1 MB |
 | Licence | GPL-3.0 | public domain | GPL-3.0 | Apache-2.0 |
 | Scope | all bacteria | all bacteria | *K. pneumoniae* only | many bacteria |
@@ -164,7 +164,7 @@ Each resistance gene appears twice in the KlebTrace track, once from Bakta and o
 
 ### 4.2 A Reproducible Pipeline and Database
 
-The Nextflow pipeline gave AMRFinderPlus and PlasmidFinder tables identical to the Galaxy outputs, line for line, for all seven genomes. It ran in 13 min 54 s for seven genomes on a 4-CPU workstation, with Bakta excluded, using 0.5 GB of memory. The database holds 7 genomes, 777 sequences, 41,116 features and resistance calls from four sources, so a single query shows each genome's carbapenemase genes from every source next to its laboratory result.
+The Nextflow pipeline gave AMRFinderPlus and PlasmidFinder tables identical to the Galaxy outputs, line for line, for all seven genomes. It ran in 13 min 54 s for all seven genomes on a 4-CPU workstation, using 0.5 GB of memory. In Galaxy, the same three tools on one genome (Nepal) took about 41 minutes of run time, 37 of them for Bakta, which the pipeline reuses from Galaxy. Without Bakta, Galaxy took 3.5 minutes for one genome and the pipeline 14 minutes for seven, about 2 minutes each, with Kleborate, the merge, the database and the quality checks added. AMRFinderPlus was slower in the pipeline (8 minutes for Nepal against 3 in Galaxy), probably because each task had only 2 CPUs. The main gain is that one command runs every step on every genome, with versions fixed and outputs checked. The database holds 7 genomes, 777 sequences, 41,116 features and resistance calls from four sources, so a single query shows each genome's carbapenemase genes from every source next to its laboratory result.
 
 The quality checks gave 50 passes, 13 warnings and no failures. The warnings flag real problems in the data: the partial and unnamed carbapenemase genes in Kenya and Italy, and duplicated genes in the Tunisian genome. A fault in the pipeline itself, a step that was not given all its input files, was logged as a GitHub issue and fixed with a new test that checks every script call in the pipeline.
 

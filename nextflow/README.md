@@ -18,7 +18,7 @@ samples.tsv + FASTA --+--> BAKTA -----------+
 | `database/schema.sql`, `load_database.py` | Database built from the pipeline's own outputs |
 | `merge_annotations.py`, `qc_checks.py` | QC report: 50 PASS, 13 WARN, 0 FAIL |
 | Reproducibility | AMRFinderPlus and PlasmidFinder tables identical, line for line, to the Galaxy outputs for all seven genomes |
-| Run time | 13 min 54 s for seven genomes on a 4-CPU laptop, 0.5 GB peak memory (`results/efficiency/`), Bakta excluded |
+| Run time | 13 min 54 s for seven genomes on a 4-CPU workstation, 0.5 GB peak memory, Bakta excluded. In Galaxy, Bakta, AMRFinderPlus and PlasmidFinder took about 41 min for one genome, 37 of them for Bakta (`results/efficiency/galaxy_vs_pipeline.tsv`) |
 | Reference databases | AMRFinderPlus 2026-05-15.1 and PlasmidFinder 81c11f4 downloaded (865 MB with the images); Bakta reused from Galaxy |
 
 ## Tools and containers
