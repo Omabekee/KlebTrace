@@ -3,7 +3,7 @@
 
 query_portal.py selects six genomes from the AMR Portal's calls alone. The
 re-check (screen_carbapenemases.py, confirmed with Kleborate) then showed that
-both "no carbapenemase" picks carry a whole carbapenemase gene split across
+both "no carbapenemase" picks have a whole carbapenemase gene split across
 contig breaks. This script:
 
 1. relabels any no-carbapenemase pick whose screen call is intact or split as

@@ -1,7 +1,7 @@
 -- KlebTrace database schema (SQLite).
 --
 -- Every table is keyed by assembly accession, so annotations, resistance calls
--- and laboratory results for one genome can be joined directly. Standard SQL
+-- and laboratory results for one genome can be joined in one query. Standard SQL
 -- only (apart from the SQLite pragma), so the same schema can move to
 -- PostgreSQL or MySQL.
 
@@ -25,7 +25,7 @@ CREATE TABLE genomes (
     md5                   TEXT
 );
 
--- Sequences (contigs, chromosomes, plasmids) in each FASTA. Features must sit
+-- Sequences (contigs, chromosomes, plasmids) in each FASTA. Features must be
 -- on one of these, which is how mismatched contig names are caught.
 CREATE TABLE sequences (
     assembly  TEXT NOT NULL REFERENCES genomes (assembly),

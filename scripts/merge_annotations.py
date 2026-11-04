@@ -21,7 +21,7 @@ lines in the header.
 
 AMRFinderPlus point mutations (for example ompK36_D135DGD) are reported with the
 coordinates of the whole affected gene, not of the change itself, so they are
-written as type `gene` with `element_subtype=POINT` rather than as a 1-bp
+written as type `gene` with `element_subtype=POINT`, not as a 1-bp
 point_mutation.
 
 Usage:

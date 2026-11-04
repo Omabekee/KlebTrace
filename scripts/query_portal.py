@@ -9,7 +9,7 @@ Steps
    metadata and any carbapenem-class resistance genes the portal reports.
 3. Summarise isolates by phenotype, carbapenemase status and world region.
 4. Select a small, deliberately mixed study set:
-     - resistant isolates carrying a carbapenemase gene
+     - resistant isolates with a carbapenemase gene
      - resistant isolates with no carbapenemase gene, with and without a porin mutation
      - susceptible isolates
    spreading the picks across world regions where possible.
@@ -74,7 +74,7 @@ CARBAPENEMASE_FAMILIES = {
 }
 
 # MIC (mg/L) that a resistant isolate with no carbapenemase must exceed, so that
-# group holds only isolates resistant under both CLSI and EUCAST breakpoints.
+# group contains only isolates resistant under both CLSI and EUCAST breakpoints.
 STRICT_MIC_ABOVE = 8
 
 RESISTANT_VALUES = ("resistant", "r")
@@ -300,11 +300,11 @@ def select_study_set(
     """Select a deliberately mixed study set of isolates.
 
     Resistant isolates with a carbapenemase contribute one genome per family,
-    carrying only that one carbapenemase gene so the phenotype can be attributed
-    to it. Two further resistant isolates carry no carbapenemase, one with a
+    each with only that one carbapenemase gene so the phenotype can be attributed
+    to it. Two further resistant isolates have no carbapenemase, one with a
     carbapenem porin point mutation (from a preferred region when one qualifies)
     and one without; both must meet the strict_resistant rule. The susceptible
-    control must carry no carbapenemase gene.
+    control must have no carbapenemase gene.
 
     By default, only isolates with a GenBank or RefSeq assembly accession
     (GCA_ or GCF_) are eligible, because these can be downloaded as complete

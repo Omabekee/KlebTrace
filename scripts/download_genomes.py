@@ -39,7 +39,7 @@ def fetch(url: str, timeout: int = 300) -> bytes:
 def parse_assembly_xml(xml: bytes) -> dict[str, str | int]:
     """Return the level, title, sequence count and total length from an ENA assembly record.
 
-    FASTA holds one sequence per scaffold, so scaffold-count is the expected
+    FASTA has one sequence per scaffold, so scaffold-count is the expected
     number of sequences. count-contig is higher when scaffolds contain gaps.
     """
     root = ET.fromstring(xml)

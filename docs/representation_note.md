@@ -8,13 +8,13 @@ Ensembl's bacterial genes come from Prokka. For resistance genes this gives a ge
 
 ## Proposal
 
-1. **Add resistance information to the existing gene, not a second gene.** AMRFinderPlus found no genes that Ensembl lacks: every resistance gene sat on an Ensembl gene. So the resistance call should be attached to that gene as extra attributes, not drawn as a separate feature. In the KlebTrace track, each resistance gene appears twice (once from Bakta, once from AMRFinderPlus), which is harder to read.
+1. **Add resistance information to the existing gene, not a second gene.** AMRFinderPlus found no genes that Ensembl lacks: every resistance gene overlapped an Ensembl gene. So the resistance call should be attached to that gene as extra attributes, not drawn as a separate feature. In the KlebTrace track, each resistance gene appears twice (once from Bakta, once from AMRFinderPlus), which is harder to read.
 
-2. **Carry these attributes for each resistance gene:**
+2. **Record these attributes for each resistance gene:**
 
    | Attribute | Example | Why |
    |---|---|---|
-   | Allele-level name | blaCTX-M-15 | The exact allele matters for treatment and surveillance |
+   | Allele-level name | blaCTX-M-15 | The exact allele is needed for treatment and surveillance |
    | Drug class and subclass | BETA-LACTAM, CEPHALOSPORIN | Tells the user what the gene does |
    | Evidence type | exact allele, partial, partial at contig end | Separates a sure call from a fragment |
    | Coverage and identity | 100% and 100% | Shows how close the match is |
@@ -24,7 +24,7 @@ Ensembl's bacterial genes come from Prokka. For resistance genes this gives a ge
 
 3. **Show point mutations as variants on the gene.** AMRFinderPlus reports porin and quinolone-target changes (for example *ompK36* D135DGD) with the position of the whole gene. They are better shown as a variant at the changed codon, attached to the gene, than as a gene of their own.
 
-4. **Add plasmid replicons as a new feature type.** PlasmidFinder replicons are short regions (114 to 661 bp in these genomes) that show which plasmid family a sequence belongs to. Shown as their own track, they let a user see which plasmid carries each resistance gene.
+4. **Add plasmid replicons as a new feature type.** PlasmidFinder replicons are short regions (114 to 661 bp in these genomes) that show which plasmid family a sequence belongs to. Shown as their own track, they let a user see which plasmid each resistance gene is on.
 
 5. **Put genome-level typing on the genome page.** Kleborate's species, sequence type, capsule and O type, and virulence and resistance scores have no position, so they belong with the genome's summary information, not in a gene track.
 

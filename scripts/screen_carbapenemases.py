@@ -3,13 +3,13 @@
 
 Gene-based calls can miss a gene that an assembly has split across contig
 breaks, because no single gene model covers it. This script maps every
-carbapenemase allele in Kleborate's database directly onto each contig, joins
-the pieces per allele, and reports whether each genome carries an intact gene,
+carbapenemase allele in Kleborate's database onto each contig, joins
+the pieces per allele, and reports whether each genome has an intact gene,
 a gene split into pieces, a partial match, or none.
 
 A gene counts as split only if every piece runs into a contig end, as expected
 when the assembler broke the sequence inside the gene. Pieces that together
-cover the gene but sit inside contigs are called "interrupted" (for example, an
+cover the gene but do not all reach a contig end are called "interrupted" (for example, an
 insertion inside the gene), since they are not explained by an assembly break.
 
 Usage

@@ -30,7 +30,7 @@ From `scripts/assess_added_value.py` (`results/tool_assessment/*.added_value*.ts
 | Bakta (CDS) | PMK1 | 5,573 | 2,384 | 3,179 | 10 | 0 |
 | Bakta (CDS) | GCA_900774885.1 | 5,833 | 2,419 | 3,403 | 11 | 0 |
 
-**AMRFinderPlus: correct names and resistance classes for genes Ensembl already has.** Every AMRFinderPlus gene in both genomes sits on an Ensembl gene, so it adds no new genes. What it adds is the right identity. Ensembl names all three *bla*NDM-1 copies correctly, but many other resistance genes carry a generic or wrong name:
+**AMRFinderPlus: correct names and resistance classes for genes Ensembl already has.** Every AMRFinderPlus gene in both genomes overlaps an Ensembl gene, so it adds no new genes. What it adds is the right identity. Ensembl names all three *bla*NDM-1 copies correctly, but many other resistance genes have a generic or wrong name:
 
 | AMRFinderPlus | Ensembl (Prokka) name and description |
 |---|---|
@@ -44,7 +44,7 @@ From `scripts/assess_added_value.py` (`results/tool_assessment/*.added_value*.ts
 
 AMRFinderPlus also adds the drug class and subclass (CARBAPENEM, CEPHALOSPORIN and so on), the method (exact allele, partial, partial at a contig end), and point mutations (*gyrA*, *parC*, *ramR*, porins), none of which are in Ensembl's gene model. Some names differ only by convention (the *sil* and *pco* metal-resistance genes are *cus* and *cop* in Ensembl).
 
-**PlasmidFinder: a feature type Ensembl does not have.** Ensembl has no plasmid replicon features, so the 11 replicons (IncHI1B and IncFIB(pNDM-Mar) on pPMK1-NDM, for example) are all new. They tell a reader which plasmid family carries each resistance gene.
+**PlasmidFinder: a feature type Ensembl does not have.** Ensembl has no plasmid replicon features, so the 11 replicons (IncHI1B and IncFIB(pNDM-Mar) on pPMK1-NDM, for example) are all new. They tell a reader which plasmid family each resistance gene is on.
 
 **Kleborate: genome-level facts with no coordinates.** Species, sequence type, capsule and O locus, virulence and resistance scores. These have no place in a gene track, but they could be genome metadata on the Ensembl species page.
 
@@ -98,7 +98,7 @@ Each criterion scored 1 (weak) to 3 (strong) for use in Ensembl Bacteria.
 ## Recommendation
 
 1. **AMRFinderPlus, run on the nucleotide sequence, is the strongest candidate** for adding resistance annotation to Ensembl Bacteria. It is already the tool behind the AMR Portal, it covers all bacteria, its database is small, and its calls explain the most laboratory results here. Running it on the DNA, not on predicted proteins, recovers genes split at contig ends, which the portal's protein-based calls miss (2 of 7 genomes here, and 5 of 37 strictly resistant portal-negative isolates in the wider screen). Its output needs a GFF3 conversion, which `merge_annotations.py` already does.
-2. **PlasmidFinder** adds a feature type Ensembl does not have, at almost no cost. It is a natural companion to AMRFinderPlus, because it shows which plasmid family carries each resistance gene.
+2. **PlasmidFinder** adds a feature type Ensembl does not have, at almost no cost. It is a natural companion to AMRFinderPlus, because it shows which plasmid family each resistance gene is on.
 3. **Kleborate** is valuable for *K. pneumoniae* but its results (species, sequence type, virulence score) suit the genome summary page, not a gene track, and it is species-specific.
 4. **Bakta** gives much the same genes as Ensembl's Prokka-based build, with richer feature types and cross-references, but its 39.4 GB database makes it the most expensive tool. It would be worth considering if Ensembl rebuilds its bacterial gene sets, not as an add-on.
 
@@ -111,7 +111,7 @@ The merged KlebTrace annotation for PMK1, renamed to Ensembl's sequence names (`
   <figcaption>Figure 1: The KlebTrace track (brown) under Ensembl's genes (red) on plasmid pPMK1-NDM, 45,000 to 68,000. Forward-strand genes are above the blue plasmid bar and reverse-strand genes below it.</figcaption>
 </figure>
 
-- **The track lines up with Ensembl's genes.** Every KlebTrace feature sits directly over an Ensembl gene, on the same strand, across the three repeated blocks. The renaming of the sequences worked, and the coordinates agree.
+- **The track lines up with Ensembl's genes.** Every KlebTrace feature lines up with an Ensembl gene, on the same strand, across the three repeated blocks. The renaming of the sequences worked, and the coordinates agree.
 - **KlebTrace adds names and meaning.** Ensembl's genes here are labelled only by their Ensembl IDs (ENSB:...) unless you click them. The KlebTrace track labels each one: blaNDM-1 (from AMRFinderPlus) above "subclass B1 metallo-beta-lactamase NDM-1" (from Bakta), ble, the GroES and GroEL chaperones, and the Tn3-family IS3000 transposase at the end of each block.
 - **Each resistance gene shows twice in the track,** once from Bakta and once from AMRFinderPlus. For a display in Ensembl, one merged feature per gene would be clearer.
 
@@ -120,9 +120,9 @@ The merged KlebTrace annotation for PMK1, renamed to Ensembl's sequence names (`
   <figcaption>Figure 2: Ensembl's own genes and gene names on pPMK1-NDM, 31,500 to 81,500, without the KlebTrace track.</figcaption>
 </figure>
 
-Figure 2 shows the naming problem described under Added value. Ensembl names the three NDM copies correctly (blaNDM-1_1, _2 and _3), but the genes just before them are bla_3 (described as "Beta-lactamase CTX-M-1"; AMRFinderPlus: blaCTX-M-15), bla_4 ("Beta-lactamase OXA-1"; AMRFinderPlus: blaOXA-1), cat_1 (catB3) and aacA4 (aac(6')-Ib-cr5). A reader of Ensembl alone would not know that this plasmid also carries an extended-spectrum beta-lactamase.
+Figure 2 shows the naming problem described under Added value. Ensembl names the three NDM copies correctly (blaNDM-1_1, _2 and _3), but the genes just before them are bla_3 (described as "Beta-lactamase CTX-M-1"; AMRFinderPlus: blaCTX-M-15), bla_4 ("Beta-lactamase OXA-1"; AMRFinderPlus: blaOXA-1), cat_1 (catB3) and aacA4 (aac(6')-Ib-cr5). A reader of Ensembl alone would not know that this plasmid also contains an extended-spectrum beta-lactamase.
 
-**How to open this view.** In November 2026, bacteria.ensembl.org redirects to the new Ensembl site, and the new site does not hold PMK1: its FTP area (https://ftp.ebi.ac.uk/pub/ensemblorganisms/) has GCA_900774885.1 (the susceptible control, annotated with Prokka) but neither GCA_000764615.1 nor its RefSeq copy GCF_000764615.1. The assembly is still current at ENA and NCBI, so the reason is not a withdrawn or replaced assembly; it is not stated in the files checked. Of the 4,824 *K. pneumoniae* isolates in AMR Portal release 2026-07 with an assembly and a meropenem result, 7 were in Ensembl Bacteria release 63 and only 3 are in the new Ensembl site (checked against its `species.json`, 16,205 assemblies, 5 October 2026). All three are susceptible and carry no carbapenemase (GCA_900774885.1, GCA_900092915.2, GCA_900776505.1), so no genome in the new site could show a carbapenemase region. The release 63 archive of Ensembl Bacteria still has PMK1:
+**How to open this view.** In November 2026, bacteria.ensembl.org redirects to the new Ensembl site, and the new site does not include PMK1: its FTP area (https://ftp.ebi.ac.uk/pub/ensemblorganisms/) has GCA_900774885.1 (the susceptible control, annotated with Prokka) but neither GCA_000764615.1 nor its RefSeq copy GCF_000764615.1. The assembly is still current at ENA and NCBI, so the reason is not a withdrawn or replaced assembly; it is not stated in the files checked. Of the 4,824 *K. pneumoniae* isolates in AMR Portal release 2026-07 with an assembly and a meropenem result, 7 were in Ensembl Bacteria release 63 and only 3 are in the new Ensembl site (checked against its `species.json`, 16,205 assemblies, 5 October 2026). All three are susceptible and have no carbapenemase (GCA_900774885.1, GCA_900092915.2, GCA_900776505.1), so no genome in the new site could show a carbapenemase region. The release 63 archive of Ensembl Bacteria still has PMK1:
 
 1. Open the species page, https://jun2026-bacteria.ensembl.org/Klebsiella_pneumoniae_gca_000764615 (the species name is the second column of `species_EnsemblBacteria.txt`, with a capital K). The old address, https://bacteria.ensembl.org/Klebsiella_pneumoniae_gca_000764615, also redirects there.
 2. Click **Example region** to open the region view.

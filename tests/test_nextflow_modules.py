@@ -1,6 +1,6 @@
 """Check that every KlebTrace script called from a Nextflow module gets all its required arguments.
 
-`-stub-run` never runs the real commands, so a module that forgets an argument
+`-stub-run` does not run the real commands, so a module that forgets an argument
 only fails at the end of a real run (issue #1: LOAD_DATABASE without --fasta).
 This test reads each module's command and compares it with the script's own
 required arguments from `--help`.
