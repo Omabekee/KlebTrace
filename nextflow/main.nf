@@ -21,7 +21,7 @@ workflow {
         .splitCsv(header: true, sep: '\t')
         .map { row -> tuple(row.assembly, file("${params.genomes}/${row.assembly}.fasta", checkIfExists: true)) }
 
-    // Bakta's full database is about 40 GB, too large for this laptop. By
+    // Bakta's full database is about 40 GB, too large for my workstation. By
     // default the pipeline reuses the Bakta GFF3 files from the Galaxy run
     // (same Bakta version and database); set --bakta_gff3_dir false and
     // --bakta_db to run Bakta here instead (for example on an HPC cluster).
