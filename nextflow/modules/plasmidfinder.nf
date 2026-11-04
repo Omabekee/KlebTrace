@@ -1,4 +1,4 @@
-// PlasmidFinder: plasmid replicons. 2.1.6, as in Galaxy (3.0.3 failed there).
+// PlasmidFinder: plasmid replicons. 2.1.6, as in Galaxy
 process PLASMIDFINDER {
     tag "$assembly"
     container 'quay.io/biocontainers/plasmidfinder:2.1.6--py314hdfd78af_2'
