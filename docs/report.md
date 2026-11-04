@@ -4,7 +4,7 @@
 
 #### GitHub Code: [KlebTrace](https://github.com/Omabekee/KlebTrace)
 
-This project was carried out as part of my EMBL-UNESCO fellowship at EMBL-EBI, where I work on the AMR Portal. It uses the portal's public data to test how well its resistance calls explain laboratory results, and what specialist annotation tools could add to Ensembl.
+This project was carried out as part of my EMBL-UNESCO fellowship at EMBL-EBI, where I work on the AMR Portal. It asks what specialist annotation tools could add to Ensembl's bacterial genomes, using genomes from the AMR Portal whose laboratory results make it possible to check the annotation.
 
 ---
 
@@ -22,18 +22,21 @@ This project was carried out as part of my EMBL-UNESCO fellowship at EMBL-EBI, w
 
 *Klebsiella pneumoniae* is a common cause of hospital infections, and strains resistant to carbapenems leave very few treatment options. Carbapenem resistance in this species usually comes from an acquired carbapenemase gene such as *bla*KPC, *bla*NDM or *bla*OXA-48, often carried on a plasmid. It can also come from changes in the outer membrane porins OmpK35 and OmpK36, which reduce how much drug gets into the cell.
 
-The EMBL-EBI AMR Portal links laboratory antibiotic test results to resistance genes found in each isolate's genome by AMRFinderPlus. This makes it possible to ask whether the genes in the portal explain the laboratory result, and what is going on when they do not.
+Ensembl Bacteria annotates its genomes with general-purpose tools: Prokka finds the genes, and other tools add non-coding RNAs and protein functions. This works across all bacteria, but it does not say which genes cause resistance, which plasmid carries them, or which strain a genome belongs to. Specialist tools such as AMRFinderPlus, Kleborate and PlasmidFinder give this information, and the question is whether Ensembl should use them.
+
+The EMBL-EBI AMR Portal makes this question testable. It links laboratory antibiotic test results to the resistance genes in each isolate's genome, so the output of any annotation tool can be checked against what the bacteria actually did in the laboratory.
 
 ### 1.1 Project Aim
 
-To build a reproducible pipeline that annotates *K. pneumoniae* genomes from the AMR Portal, brings the annotation, the portal's resistance calls and the laboratory results together in one quality-checked database, and uses them to assess what specialist annotation tools could add to Ensembl.
+To assess what specialist annotation tools could add to Ensembl's bacterial genome annotation, using *K. pneumoniae* genomes from the AMR Portal, and to build a reproducible pipeline that runs these tools and brings their results, the portal's resistance calls and the laboratory results together in one quality-checked database.
 
-### 1.2 Questions
+### 1.2 Objectives
 
-1. **Annotation agreement.** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
-2. **Genotype and phenotype.** Do the genes found explain the laboratory result, and what explains resistant isolates with no carbapenemase in the portal?
-3. **Genomic context.** Do the carbapenemase genes sit on plasmids or on the chromosome?
-4. **Value for Ensembl.** What do specialist tools add to Ensembl's own genome annotation, and how could these features be shown in the Ensembl browser?
+1. **Value for Ensembl.** What do specialist tools add to Ensembl's own genome annotation, and how could these features be shown in the Ensembl browser?
+2. **A reproducible pipeline.** Can the annotation be run as a pipeline that gives the same results every time, and loaded with the portal's calls and laboratory results into a database with automatic quality checks?
+3. **Annotation agreement.** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
+4. **Genotype and phenotype.** Do the genes found explain the laboratory result, and what explains resistant isolates with no carbapenemase in the portal?
+5. **Genomic context.** Do the carbapenemase genes sit on plasmids or on the chromosome?
 
 ## 2. Data
 
@@ -57,78 +60,49 @@ Seven genomes were chosen so that each one tests a different question.
 | No carbapenemase, confirmed | GCA_000567225.2 | USA | 2012 | >32 | none |
 | Susceptible control | GCA_900774885.1 | Saint Lucia | 2018 | susceptible, no MIC | none |
 
-The assemblies were downloaded from ENA. Two of them, Nepal and Saint Lucia, are also in Ensembl Bacteria release 63, which gave a baseline annotation to compare against.
+The assemblies were downloaded from ENA. Two of them, Nepal and Saint Lucia, are also in Ensembl Bacteria release 63, and their Ensembl annotation was the baseline for the tool assessment.
 
 ## 3. Methods
 
 ### 3.1 Selecting the Genomes
 
-The AMR Portal Parquet files were queried with DuckDB in Python, reading only the needed columns over HTTPS. Carbapenemase genes were taken from the AMRFinderPlus element symbol, and porin point mutations were kept separate from acquired genes. One genome was picked for each carbapenemase family, preferring genomes that are in Ensembl. The seventh genome was added after the re-screen in section 3.3.
+The AMR Portal Parquet files were queried with DuckDB in Python, reading only the needed columns over HTTPS. Carbapenemase genes were taken from the AMRFinderPlus element symbol, and porin point mutations were kept separate from acquired genes. One genome was picked for each carbapenemase family, preferring genomes that are in Ensembl. The seventh genome was added after the re-screen in section 3.5.
 
 ### 3.2 Annotation in Galaxy
 
 The genomes were annotated on usegalaxy.org with a workflow that runs Bakta 1.9.4, AMRFinderPlus 4.2.7 (database 2026-05-15, organism *K. pneumoniae*, nucleotide input), PlasmidFinder 2.1.6, IntegronFinder 2.0.5 and ISEScan 1.7.2.3 on all genomes in one run. Kleborate 3.3.0b1 is not on usegalaxy.org and was run locally.
 
-### 3.3 Re-screen for Split Carbapenemase Genes
+### 3.3 Pipeline and Database
+
+The Galaxy workflow was rebuilt as a Nextflow pipeline using the same tool versions, run in Apptainer containers. The Bakta step reuses the Galaxy output, because Bakta's full database (39.4 GB) was too large for the workstation. The pipeline merges the outputs into one GFF3 file per genome, with standard feature types and the tool named on every feature. It then loads genomes, features, laboratory results and resistance calls from every source into an SQLite database, and runs nine quality checks, for example that every feature sits on a sequence in the genome FASTA and that no identifier is repeated.
+
+### 3.4 Tool Assessment Against Ensembl
+
+Ensembl's GFF3 files for Nepal and Saint Lucia were downloaded from the Ensembl Genomes FTP site. Ensembl uses different sequence names from ENA (for example "pPMK1-NDM" instead of CP008933.1), so the KlebTrace files were renamed by matching sequence lengths, using the name in the FASTA header when two sequences had the same length. Each tool was then assessed on five points:
+
+- **Added value:** each feature was matched to the Ensembl gene it overlaps on the same strand, and the two names were compared.
+- **Accuracy:** for each source, resistance was counted as explained by an acquired carbapenemase, or by changes in both OmpK35 and OmpK36, and compared with the laboratory result for all seven genomes.
+- **Fit for Ensembl:** output format, conversion needed, run time, database size, container, licence and recent releases.
+- **Scorecard:** each tool was scored from 1 to 3 on six criteria.
+- **Display:** the merged annotation for Nepal was uploaded to the Ensembl browser as a custom track.
+
+### 3.5 Re-screen for Split Carbapenemase Genes
 
 The 37 strictly resistant isolates with no carbapenemase in the portal were screened again. The 568 carbapenemase alleles in Kleborate's database were aligned to each assembly with minimap2, keeping matches of at least 50 bp and 95% identity. For each allele, the pieces found on different contigs were added together. A gene was called split when the pieces covered at least 95% of it and every piece ended at a contig edge, and partial when they covered less. For one split gene, public Illumina reads were mapped across the join between the two contig ends to confirm it. The genomes with no match were also run through Kleborate.
 
-### 3.4 Pipeline and Database
-
-The Galaxy workflow was rebuilt as a Nextflow pipeline using the same tool versions, run in Apptainer containers. The Bakta step reuses the Galaxy output, because Bakta's full database (39.4 GB) was too large for the workstation. The pipeline merges the outputs into one GFF3 file per genome, loads genomes, features, laboratory results and resistance calls from every source into an SQLite database, and runs nine quality checks.
-
-### 3.5 Comparison with Ensembl
-
-Ensembl's GFF3 files for Nepal and Saint Lucia were downloaded. Ensembl uses different sequence names from ENA (for example "pPMK1-NDM" instead of CP008933.1), so the KlebTrace files were renamed by matching sequence lengths. Each tool's features were then matched to Ensembl's genes, and the merged annotation for Nepal was uploaded to the Ensembl browser as a custom track.
-
 ## 4. Results
 
-### 4.1 Annotation Agreement
+### 4.1 Value for Ensembl
 
-The portal and KlebTrace agreed on carbapenemase status for 5 of the 7 genomes. In the other two, the portal reports no carbapenemase but the genome carries one.
+#### 4.1.1 Ensembl's Annotation
 
-| Genome | Portal | AMRFinderPlus (DNA) | Kleborate | Split-gene screen |
-|---|---|---|---|---|
-| Kenya | none | *bla*OXA, closest OXA-232 | OXA-232? | OXA-232, split in 2 pieces |
-| Italy | none | *bla*KPC, partial at contig end | none | KPC-2, split in 3 pieces |
+Ensembl annotates both genomes with Prokka: 5,553 protein-coding genes for Nepal and 5,817 for Saint Lucia. Bakta's genes match Ensembl's closely, with 99.5% at exactly the same coordinates, because both use the same gene finder. Many of Ensembl's genes have a name and a description, but nothing marks a gene as a resistance gene.
 
-In Kenya, OXA-232 is split between the two ends of a 6.1 kb contig. 291 sequencing reads cross the join between the two ends, which shows that the contig is a small circular plasmid with the gene intact. This contig has about 5.5 times the read depth of the large contigs, as expected for a small plasmid with several copies per cell. In Italy, the whole KPC-2 gene is present at 100% identity in three pieces on three contigs, but no reads were available to confirm it.
+The new Ensembl site does not hold Nepal. Only 3 of the 4,824 portal isolates are in it, all susceptible, so the release 63 archive of Ensembl Bacteria was used.
 
-The likely reason is the way the portal runs AMRFinderPlus. All its calls come from predicted proteins, while the Galaxy run searched the DNA directly. A gene broken across contigs does not give a complete protein, so a protein search can miss it. Bakta did not predict a gene at Kenya's OXA-232 either.
+#### 4.1.2 What Each Tool Adds
 
-Across the 37 strictly resistant isolates with no carbapenemase in the portal, 2 carry a whole carbapenemase gene split across contigs and 3 more carry part of one: 5 of 37, about 14%.
-
-### 4.2 Genotype and Phenotype
-
-| Source | Explains the laboratory result |
-|---|---|
-| Portal calls | 4 of 7 |
-| AMRFinderPlus on the DNA | 6 of 7 |
-| Kleborate | 5 of 7 |
-
-Resistance was counted as explained by a carbapenemase, or by changes in both OmpK35 and OmpK36. The portal also misses some porin changes, such as the OmpK35 stop codon in Kenya. One genome stays unexplained by every source: GCA_000567225.2 has a meropenem MIC above 32 mg/L, no carbapenemase, no extended-spectrum beta-lactamase and a truncated OmpK36 only.
-
-### 4.3 Genomic Context
-
-In Nepal, the only complete genome in the set, *bla*NDM-1 sits on the plasmid pPMK1-NDM (304,526 bp) in three copies. Each copy is part of an identical block of eight genes (*bla*NDM-1, *ble*, *trpF*, *dsbD*, *cutA*, *groES*, *groL* and an IS3000 transposase), and the block repeats every 8,588 bp. The same plasmid carries CTX-M-15, OXA-1, a class 1 integron, *armA*, and mercury and tellurium resistance genes. In Kenya, OXA-232 is on a small plasmid. The other genomes are in many pieces, so the location of their genes cannot be read directly.
-
-<figure>
-  <img src="../galaxy/screenshots/p2_jbrowse_PMK1_NDM_tandem.png" alt="Figure 1: The three NDM-1 copies on plasmid pPMK1-NDM in JBrowse" width="800">
-  <figcaption>Figure 1: The three NDM-1 copies on plasmid pPMK1-NDM (45 to 72 kb) in JBrowse, with the Bakta, AMRFinderPlus and PlasmidFinder tracks</figcaption>
-</figure>
-
-### 4.4 Other Findings
-
-- **Resistance and virulence together.** The Tunisian OXA-48 genome also carries the aerobactin genes, *rmpA*, *rmpA2* and *peg-344*, which are linked to hypervirulent *K. pneumoniae*. Kleborate gives it the highest virulence score in the set.
-- **A duplicated assembly.** In the same genome, contigs 130 to 147 repeat sequence already present earlier in the assembly, so many genes are counted twice, in KlebTrace and in the portal.
-
-### 4.5 Pipeline and Quality Checks
-
-The Nextflow pipeline gave AMRFinderPlus and PlasmidFinder tables identical to the Galaxy outputs, line for line, for all seven genomes. It ran in 13 min 54 s for seven genomes on a 4-CPU workstation, with Bakta excluded. The quality checks gave 50 passes, 13 warnings and no failures. The warnings flag the Kenya and Italy carbapenemases for review, and the duplicated genes in the Tunisian genome.
-
-### 4.6 Value for Ensembl
-
-Ensembl's genes for these genomes come from Prokka, and Bakta's genes match them closely: 99.5% have exactly the same coordinates. AMRFinderPlus found no new genes, but it gave the right name to genes that Ensembl names loosely.
+**AMRFinderPlus** found no genes that Ensembl lacks: every resistance gene sat on an Ensembl gene. What it adds is the correct identity of genes that Ensembl names loosely.
 
 | AMRFinderPlus | Ensembl |
 |---|---|
@@ -138,32 +112,111 @@ Ensembl's genes for these genomes come from Prokka, and Bakta's genes match them
 | *tet(D)* | tetA, class B |
 | *qnrB1* | no name |
 
-PlasmidFinder adds plasmid replicons, which Ensembl does not show at all. Kleborate's results have no positions, so they suit the genome summary page.
+It also adds the drug class of each gene, point mutations in genes such as *gyrA* and the porins, and a flag for genes that are only partly present.
+
+**PlasmidFinder** adds plasmid replicons, a feature type Ensembl does not show at all. They tell the user which plasmid family carries each resistance gene.
+
+**Kleborate** adds species, sequence type, capsule type and virulence and resistance scores. These have no position on the genome, so they suit the genome summary page.
+
+**Bakta** gives much the same genes as Ensembl, plus 10 to 11 small genes, origins of replication, CRISPR arrays and regulatory regions that Ensembl does not show.
+
+#### 4.1.3 Accuracy
+
+| Source | Carbapenemase found | Explains the laboratory result |
+|---|---|---|
+| AMR Portal calls | 3 of 7 genomes | 4 of 7 |
+| AMRFinderPlus on the DNA | 5 of 7 | 6 of 7 |
+| Kleborate | 4 of 7 | 5 of 7 |
+
+AMRFinderPlus run on the DNA explained the most laboratory results. The difference from the portal comes from two genomes with a carbapenemase gene split across contigs (section 4.3.1).
+
+#### 4.1.4 Fit for Ensembl
+
+| | Bakta | AMRFinderPlus | Kleborate | PlasmidFinder |
+|---|---|---|---|---|
+| Output | GFF3 | TSV, needs conversion | one row per genome, no positions | TSV, needs conversion |
+| Run time per genome | 10 to 30 min (Galaxy) | about 1 min | 42 s | 21 s |
+| Database | 39.4 GB | 246 MB | included | under 1 MB |
+| Licence | GPL-3.0 | public domain | GPL-3.0 | Apache-2.0 |
+| Scope | all bacteria | all bacteria | *K. pneumoniae* only | many bacteria |
+
+#### 4.1.5 Scorecard and Recommendation
+
+AMRFinderPlus scored 17 of 18 and Kleborate 10 of 18. Bakta and PlasmidFinder do not call resistance genes, so they were not scored on matching the laboratory results; both scored 12 of the remaining 15. The full scorecard is in [`docs/tool_assessment.md`](tool_assessment.md).
+
+The recommendation is AMRFinderPlus run on the DNA as the main tool for resistance annotation in Ensembl, with PlasmidFinder alongside it for plasmid context. AMRFinderPlus covers all bacteria, has a small database, is already used by the AMR Portal, and gave the most accurate results here. Kleborate is useful for *K. pneumoniae* genome summaries, and Bakta would be worth considering if Ensembl rebuilds its bacterial gene sets.
+
+#### 4.1.6 Display in the Ensembl Browser
 
 <figure>
-  <img src="../results/tool_assessment/figures/p4_ensembl_PMK1_NDM_klebtrace_track.png" alt="Figure 2: KlebTrace custom track in the Ensembl browser" width="800">
-  <figcaption>Figure 2: The KlebTrace track (brown) under Ensembl's genes (red) on pPMK1-NDM in the Ensembl Bacteria release 63 browser</figcaption>
+  <img src="../results/tool_assessment/figures/p4_ensembl_PMK1_NDM_klebtrace_track.png" alt="Figure 1: KlebTrace custom track in the Ensembl browser" width="800">
+  <figcaption>Figure 1: The KlebTrace track (brown) under Ensembl's genes (red) on plasmid pPMK1-NDM, 45 to 68 kb, in the Ensembl Bacteria release 63 browser</figcaption>
 </figure>
 
-The track lines up with every Ensembl gene in the NDM region. In the scorecard, AMRFinderPlus scored 17 of 18 and Kleborate 10 of 18. Bakta and PlasmidFinder do not call resistance genes, so they were not scored on matching the laboratory results; both scored 12 of the remaining 15. The full scorecard is in [`docs/tool_assessment.md`](tool_assessment.md). A short proposal for how these features could be shown in Ensembl is in [`docs/representation_note.md`](representation_note.md).
+The KlebTrace track lines up with every Ensembl gene in the NDM region, and labels each one: *bla*NDM-1, *ble*, the GroES and GroEL chaperones and the IS3000 transposase. Ensembl's own view of the region next to it (Figure 2) names the CTX-M-15 gene only "bla".
+
+<figure>
+  <img src="../results/tool_assessment/figures/p4_ensembl_PMK1_NDM_ensembl_genes.png" alt="Figure 2: Ensembl's own gene names on pPMK1-NDM" width="800">
+  <figcaption>Figure 2: Ensembl's own genes and gene names on pPMK1-NDM, 31.5 to 81.5 kb, without the KlebTrace track</figcaption>
+</figure>
+
+Each resistance gene appears twice in the KlebTrace track, once from Bakta and once from AMRFinderPlus. A short proposal for how resistance features could be shown in Ensembl, with the resistance details attached to the existing gene, is in [`docs/representation_note.md`](representation_note.md).
+
+### 4.2 A Reproducible Pipeline and Database
+
+The Nextflow pipeline gave AMRFinderPlus and PlasmidFinder tables identical to the Galaxy outputs, line for line, for all seven genomes. It ran in 13 min 54 s for seven genomes on a 4-CPU workstation, with Bakta excluded, using 0.5 GB of memory. The database holds 7 genomes, 777 sequences, 41,116 features and resistance calls from four sources, so a single query shows each genome's carbapenemase genes from every source next to its laboratory result.
+
+The quality checks gave 50 passes, 13 warnings and no failures. The warnings flag real problems in the data: the partial and unnamed carbapenemase genes in Kenya and Italy, and duplicated genes in the Tunisian genome. A fault in the pipeline itself, a step that was not given all its input files, was logged as a GitHub issue and fixed with a new test that checks every script call in the pipeline.
+
+### 4.3 Other Findings
+
+#### 4.3.1 An Independent Check of the AMR Portal's Calls
+
+Annotating the portal's genomes again with other tools gives an independent check of its resistance calls: it shows where they match the laboratory result, where they fall short, and what extra information other tools add. The re-annotation agreed with the portal on carbapenemase status for 5 of the 7 genomes. In the other two, the portal reports no carbapenemase but the genome carries one.
+
+| Genome | Portal | AMRFinderPlus (DNA) | Kleborate | Split-gene screen |
+|---|---|---|---|---|
+| Kenya | none | *bla*OXA, closest OXA-232 | OXA-232? | OXA-232, split in 2 pieces |
+| Italy | none | *bla*KPC, partial at contig end | none | KPC-2, split in 3 pieces |
+
+In Kenya, OXA-232 is split between the two ends of a 6.1 kb contig. 291 sequencing reads cross the join between the two ends, which shows that the contig is a small circular plasmid with the gene intact, and this contig has about 5.5 times the read depth of the large contigs, as expected for a small plasmid with several copies per cell. In Italy, the whole KPC-2 gene is present at 100% identity in three pieces on three contigs, but no reads were available to confirm it.
+
+Every call in the portal's data is labelled as made from predicted proteins, while the Galaxy run searched the DNA directly. A gene broken across contigs does not give a complete protein, so a protein search can miss it; Bakta did not predict a gene at Kenya's OXA-232 either. Across the 37 strictly resistant isolates with no carbapenemase in the portal, 2 carry a whole carbapenemase gene split across contigs and 3 more carry part of one. The portal's calls also miss some porin changes, such as the OmpK35 stop codon in Kenya.
+
+#### 4.3.2 Genomic Context
+
+In Nepal, the only complete genome in the set, *bla*NDM-1 sits on the plasmid pPMK1-NDM (304,526 bp) in three copies. Each copy is part of an identical block of eight genes (*bla*NDM-1, *ble*, *trpF*, *dsbD*, *cutA*, *groES*, *groL* and an IS3000 transposase), and the block repeats every 8,588 bp. The same plasmid carries CTX-M-15, OXA-1, a class 1 integron, *armA*, and mercury and tellurium resistance genes. In Kenya, OXA-232 is on a small plasmid. The other genomes are in many pieces, so the location of their genes cannot be read directly.
+
+<figure>
+  <img src="../galaxy/screenshots/p2_jbrowse_PMK1_NDM_tandem.png" alt="Figure 3: The three NDM-1 copies on plasmid pPMK1-NDM in JBrowse" width="800">
+  <figcaption>Figure 3: The three NDM-1 copies on plasmid pPMK1-NDM (45 to 72 kb) in JBrowse, with the Bakta, AMRFinderPlus and PlasmidFinder tracks</figcaption>
+</figure>
+
+#### 4.3.3 An Unexplained Resistant Genome
+
+GCA_000567225.2 has a meropenem MIC above 32 mg/L, but no source found a carbapenemase or an extended-spectrum beta-lactamase. Its only change is a truncated OmpK36, which does not usually give resistance this high on its own.
+
+#### 4.3.4 Resistance and Virulence Together
+
+The Tunisian OXA-48 genome also carries the aerobactin genes, *rmpA*, *rmpA2* and *peg-344*, which are linked to hypervirulent *K. pneumoniae*, and Kleborate gives it the highest virulence score in the set. In the same genome, contigs 130 to 147 repeat sequence already present earlier in the assembly, so many of its genes are counted twice, in KlebTrace and in the portal.
 
 ## 5. Conclusion and Future Directions
 
-This project built a reproducible pipeline that annotates *K. pneumoniae* genomes from the AMR Portal and stores the annotation, the portal's resistance calls and the laboratory results in one quality-checked database. Rebuilt in Nextflow, the Galaxy workflow gave identical results, and the quality checks caught real problems in the data, such as a duplicated assembly and partial carbapenemase genes.
+This project assessed four annotation tools against Ensembl's own annotation of *K. pneumoniae*, using AMR Portal genomes whose laboratory results made it possible to check the tools' calls. Ensembl already has nearly all the resistance genes, but often under a loose name and with nothing to say what they do. AMRFinderPlus run on the DNA would add the correct gene names, drug classes and point mutations, and it explained the most laboratory results (6 of 7). PlasmidFinder would add plasmid replicons, which Ensembl does not show today. A custom track in the Ensembl browser showed that the two can be lined up with Ensembl's genes.
 
-On the four questions: the re-annotation agreed with the portal for 5 of 7 genomes, and the other two carry carbapenemase genes split across contigs that the portal's calls do not include. AMRFinderPlus run on the DNA explained the most laboratory results (6 of 7). In the complete NDM genome, the carbapenemase sits on a large plasmid in three tandem copies. For Ensembl, the main gain from specialist tools is better information on genes it already has: correct resistance gene names, drug classes and point mutations from AMRFinderPlus, and plasmid replicons from PlasmidFinder, which Ensembl does not show today.
+The work runs as a reproducible Nextflow pipeline that gave the same results as the Galaxy workflow and loads everything into one quality-checked database. Its checks caught real problems in the data. Along the way, the re-annotation showed that carbapenemase genes split across contigs are missing from the portal's calls in two of the seven genomes.
 
-The study has limits. It used only seven genomes, and the split KPC-2 in Italy could not be confirmed with reads. The reason the portal misses split genes was inferred from its data, where every call is labelled as made from predicted proteins; the portal's own pipeline was not examined. One resistant genome remains unexplained.
+The study has limits. It used only seven genomes, only two of which are in Ensembl, and the split KPC-2 in Italy could not be confirmed with reads. The reason the portal misses split genes was inferred from its data, where every call is labelled as made from predicted proteins; the portal's own pipeline was not examined. One resistant genome remains unexplained.
 
 Future work includes:
 
-- confirming split genes with sequencing reads or long-read assemblies;
 - merging the Bakta and AMRFinderPlus features into one feature per gene for display in Ensembl;
-- looking for other causes of resistance in GCA_000567225.2, such as efflux pumps or AmpC enzymes;
 - building a pangenome of the seven genomes with Panaroo, to see which genes all of them share and where the carbapenemase genes fall;
 - finding biosynthetic gene clusters with antiSMASH and comparing them with Kleborate's virulence loci, such as yersiniabactin and aerobactin;
 - summarising gene functions into pathways with eggNOG-mapper, which applies the EggNOG database that Ensembl already uses;
-- running the pipeline on a cluster, including the Bakta step with its full database.
+- running the pipeline on a cluster, including the Bakta step with its full database;
+- confirming split genes with sequencing reads or long-read assemblies;
+- looking for other causes of resistance in GCA_000567225.2, such as efflux pumps or AmpC enzymes.
 
 ---
 

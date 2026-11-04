@@ -10,12 +10,13 @@
 
 *Klebsiella pneumoniae* is a WHO critical-priority pathogen, and carbapenem resistance in this species leaves few treatment options. The [EMBL-EBI AMR Portal](https://www.ebi.ac.uk/amr) links laboratory antimicrobial susceptibility results to genome-based resistance calls for the same isolates.
 
-KlebTrace uses that resource to ask four questions:
+KlebTrace uses that resource to assess what specialist annotation tools could add to Ensembl's bacterial genomes, with five objectives:
 
-1. **Annotation agreement.** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
-2. **Genotype-phenotype concordance.** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
-3. **Genomic context.** Are carbapenemase genes located on plasmids or on the chromosome?
-4. **Value for Ensembl.** What do specialist tools add to Ensembl's own genome annotation, and how could these features be shown in the Ensembl browser?
+1. **Value for Ensembl.** What do specialist tools add to Ensembl's own genome annotation, and how could these features be shown in the Ensembl browser?
+2. **A reproducible pipeline.** Can the annotation be run as a pipeline that gives the same results every time, and loaded with the portal's calls and laboratory results into a database with automatic quality checks?
+3. **Annotation agreement.** Do Bakta, AMRFinderPlus and Kleborate find the same resistance genes as the AMR Portal when they annotate the same genomes?
+4. **Genotype and phenotype.** Do the detected genes explain each isolate's laboratory meropenem result, and what explains resistant isolates with no known carbapenemase gene?
+5. **Genomic context.** Are carbapenemase genes located on plasmids or on the chromosome?
 
 ## Workflow
 

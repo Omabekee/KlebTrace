@@ -93,7 +93,7 @@ Each criterion scored 1 (weak) to 3 (strong) for use in Ensembl Bacteria.
 | Resources | 1: 39.4 GB database, slowest step | 3 | 2: large container | 3 |
 | Scope | 3: all bacteria | 3: all bacteria | 1: one species complex | 2 |
 | Licence and maintenance | 3 | 3 | 2: current release is a beta | 2: database updates are infrequent |
-| **Total (of 18, or 12 where n/a)** | **12 of 15** | **17 of 18** | **10 of 18** | **12 of 15** |
+| **Total (of 18, or 15 where accuracy does not apply)** | **12 of 15** | **17 of 18** | **10 of 18** | **12 of 15** |
 
 ## Recommendation
 
