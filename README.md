@@ -2,9 +2,9 @@
 
 **A reproducible annotation and data-integration pipeline for investigating carbapenem resistance in *Klebsiella pneumoniae***
 
-> Status: pilot in progress (seven genomes), built to scale to the full EMBL-EBI AMR Portal release.
+> **Status:** pilot complete on seven genomes (pipeline built to scale to the full EMBL-EBI AMR Portal release).
 
-**Report:** [docs/report.md](docs/report.md)
+## Report: Learn more about the findings in the [full report](docs/report.md)
 
 ## Overview
 
